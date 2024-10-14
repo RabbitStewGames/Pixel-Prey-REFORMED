@@ -1,0 +1,1 @@
+draw_text_color(window_get_width() - 24, 0, fps, c_green,c_green,c_green,c_green,1)

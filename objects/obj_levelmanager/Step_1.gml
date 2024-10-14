@@ -1,0 +1,1 @@
+global.acid_height += 1/60 * global.level_list[global.ACTIVE_LEVEL].leveldata.acid_speed
