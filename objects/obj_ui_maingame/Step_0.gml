@@ -1,4 +1,4 @@
-// DEBUG
-
-if(keyboard_check_pressed(ord("O"))) obj_player.DamageMe(DamageSource.Acid, 1)
-if(keyboard_check_pressed(ord("P"))) global.playerhp++
+if(collectible_sprite != -1){
+	collectible_frame += 10/60
+	if(collectible_frame > sprite_get_number(collectible_sprite)) collectible_frame = 0
+}

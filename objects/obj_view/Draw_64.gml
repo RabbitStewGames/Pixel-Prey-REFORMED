@@ -1,1 +1,2 @@
-draw_text_color(window_get_width() - 24, 0, fps, c_green,c_green,c_green,c_green,1)
+draw_set_font(font_main)
+draw_text_shadow(window_get_width() - 48, 0, fps, 1.5,1.5,0, c_green)

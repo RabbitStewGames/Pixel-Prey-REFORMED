@@ -19,5 +19,5 @@ if(SCROLL_FINISHED)
 		if(CURSORINDEX >= 7) CURSORINDEX = 0
 	}
 	
-	draw_sprite(s_messagebox_next, CURSORINDEX, window_get_width() - padding - 5, rootY + 128)
+	draw_sprite(s_messagebox_next, CURSORINDEX, window_get_width() - padding - 24, rootY + 120)
 }

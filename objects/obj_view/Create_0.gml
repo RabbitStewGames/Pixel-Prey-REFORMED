@@ -12,6 +12,8 @@ Y_OFFSET = 0
 ZOOM = 1
 TARGET_ZOOM = 1
 
+CAMERA = -5
+
 ShakeScreen = function(duration, intensity){
 	
 	SHAKE_TIMER = duration
@@ -21,6 +23,7 @@ ShakeScreen = function(duration, intensity){
 
 Reset = function()
 {
-	view_camera[0] = camera_create_view(0,0, 1024, 576, 0, noone, -1, -1, 400, 250)
+	CAMERA = camera_create_view(0,0, 1024, 576, 0, noone, -1, -1, 400, 250)
+	view_camera[0] = CAMERA
 	view_visible[0] = true
 }

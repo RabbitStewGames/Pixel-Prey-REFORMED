@@ -8,6 +8,8 @@ function LoadContent()
 	global.level_list = []
 	global.player_list = []
 	
+	global.titlemusic = LoadSound($"{global.ResourcePath}/mus_titlescreen.ogg")
+	
 	if(directory_exists(global.ResourcePath))
 	{
 		// ==== LOAD LEVELS ==== //
@@ -131,7 +133,7 @@ function LevelData(_data, _folder) constructor
 			var _s_acid = LoadImage($"{global.ResourcePath}/levels/{levelfolder}/images/acid.png", data.images.acid_frames)
 			var _background_interior = LoadImage($"{global.ResourcePath}/levels/{levelfolder}/images/bg_interior.png")
 			
-			var tileImg = LoadImage($"{global.ResourcePath}/levels/{levelfolder}/images/tileset.png")
+			
 			
 			var _stages = []
 			
@@ -141,7 +143,7 @@ function LevelData(_data, _folder) constructor
 			{
 				if(string_ends_with(img_name, ".png"))
 				{
-					var img = LoadImage(img_name)
+					var img = LoadImage($"{global.ResourcePath}/levels/{levelfolder}/progen/{img_name}")
 				
 					array_push(_stages, img);
 				}
@@ -150,14 +152,67 @@ function LevelData(_data, _folder) constructor
 
 			file_find_close();
 			
+			
+			
+			var __collectibles = data.leveldata.collectibles
+			var _collectibles = []
+			
+			for(var i = 0; i < array_length(__collectibles); i++)
+			{
+				var c = {
+					image: LoadImage($"{global.ResourcePath}/levels/{levelfolder}/images/{__collectibles[i].image}", __collectibles[i].frames),
+					value: __collectibles[i].value
+				}
+				
+				array_push(_collectibles, c)
+			}
+			
+			
+			
+			var _chaser = -1
+			
+			if(directory_exists($"{global.ResourcePath}/levels/{levelfolder}/obstacle/chaser")){
+				
+				var file = file_text_open_read($"{global.ResourcePath}/levels/{levelfolder}/obstacle/chaser/attributes.json")
+				var contents = file_text_read_string(file)
+				var d = json_parse(contents)
+				
+				var c = {
+					image: LoadImage($"{global.ResourcePath}/levels/{levelfolder}/obstacle/chaser/main_sprite.png",d.framecount),
+					mask: LoadImage($"{global.ResourcePath}/levels/{levelfolder}/obstacle/chaser/mask.png"),
+					framerate: d.framerate,
+					framecount: d.framecount,
+					move_speed: d.move_speed,
+					solid: d.solid,
+					anim:{
+						idle: d.anim.idle,
+						capture: d.anim.capture,
+						hold: d.anim.hold,
+						death: d.anim.death
+					},
+					sfx_digest: LoadSound($"{global.ResourcePath}/levels/{levelfolder}/obstacle/chaser/digest.ogg"),
+					sfx_death: LoadSound($"{global.ResourcePath}/levels/{levelfolder}/obstacle/chaser/death.ogg"),
+					sfx_aggro: LoadSound($"{global.ResourcePath}/levels/{levelfolder}/obstacle/chaser/aggro.ogg"),
+					sfx_capture: LoadSound($"{global.ResourcePath}/levels/{levelfolder}/obstacle/chaser/capture.ogg"),
+				}
+				
+				file_text_close(file)
+				
+				_chaser = c
+			}
+			
+			
+			
 			var output = {
 				directory: levelfolder,
 				levelname: _levelname,
 				predname: _predname,
 				music: LoadSound($"{global.ResourcePath}/levels/{levelfolder}/audio/music.ogg"),
 				music_muffled: LoadSound($"{global.ResourcePath}/levels/{levelfolder}/audio/music_muffled.ogg"),
+				ambience: LoadSound($"{global.ResourcePath}/levels/{levelfolder}/audio/ambience.ogg"),
 				s_idle: _s_idle,
 				s_acid: _s_acid,
+				s_goal: LoadImage($"{global.ResourcePath}/levels/{levelfolder}/images/goal.png"),
 				acid_speed: data.leveldata.acid_speed,
 				animation_delay: data.images.animation_delay,
 				acid_color: data.images.acid_color,
@@ -165,8 +220,10 @@ function LevelData(_data, _folder) constructor
 				ambient_light: data.images.ambient_light,
 				background_interior: _background_interior,
 				sfx_talk: LoadSound($"{global.ResourcePath}/levels/{levelfolder}/audio/talk.ogg"),
-				tileset: tileImg,
-				stages: _stages
+				sfx_collect: LoadSound($"{global.ResourcePath}/levels/{levelfolder}/audio/collectible.ogg"),
+				stages: _stages,
+				collectibles: _collectibles,
+				chaser:_chaser,
 			}
 			return output
 		}
@@ -204,10 +261,29 @@ function PlayerData(_data, _folder) constructor{
 
 	static Parse = function(data, folder)
 	{
-		var strip = LoadImage($"{global.ResourcePath}/players/{folder}/main_sprite.png",15)
+		var imgCount = data.anim_frames
+		var strip = LoadImage($"{global.ResourcePath}/players/{folder}/main_sprite.png",imgCount)
 		sprite_set_offset(strip, sprite_get_width(strip) / 2, sprite_get_height(strip))
 		var _mask = LoadImage($"{global.ResourcePath}/players/{folder}/mask.png")
 		sprite_set_offset(_mask, sprite_get_width(_mask) / 2, sprite_get_height(_mask))
+		
+		var _steps = []
+			
+			var s_name = file_find_first($"{global.ResourcePath}/players/{folder}/footsteps/*", fa_none);
+
+			while (s_name != "")
+			{
+				if(string_ends_with(s_name, ".ogg"))
+				{
+					var s = LoadSound($"{global.ResourcePath}/players/{folder}/footsteps/{s_name}")
+				
+					array_push(_steps, s);
+				}
+			    s_name = file_find_next();
+			}
+
+			file_find_close();
+		
 		
 		var output = {
 			playerfolder: folder,
@@ -224,6 +300,29 @@ function PlayerData(_data, _folder) constructor{
 			sfx_talk: LoadSound($"{global.ResourcePath}/players/{folder}/talk.ogg"),
 			sfx_splash: LoadSound($"{global.ResourcePath}/players/{folder}/splash.ogg"),
 			sfx_swim: LoadSound($"{global.ResourcePath}/players/{folder}/swim.ogg"),
+			sfx_bonk: LoadSound($"{global.ResourcePath}/players/{folder}/bonk.ogg"),
+			sfx_slide: LoadSound($"{global.ResourcePath}/players/{folder}/slide.ogg"),
+			sfx_land: LoadSound($"{global.ResourcePath}/players/{folder}/land.ogg"),
+			sfx_footsteps: _steps,
+			anim_idle: data.anim_idle,
+			anim_run: data.anim_run,
+			anim_quickturn: data.anim_quickturn,
+			anim_stop: data.anim_stop,
+			anim_jump: data.anim_jump,
+			anim_midair_up: data.anim_midair_up,
+			anim_midair_down: data.anim_midair_down,
+			anim_bonk: data.anim_bonk,
+			anim_land: data.anim_land,
+			anim_slowturn: data.anim_slowturn,
+			anim_crouch_begin: data.anim_crouch_begin,
+			anim_crouch_idle: data.anim_crouch_idle,
+			anim_crawl: data.anim_crawl,
+			anim_crouch_end: data.anim_crouch_end,
+			anim_swim_up: data.anim_swim_up,
+			anim_swim_down: data.anim_swim_down,
+			anim_stun: data.anim_stun,
+			jump_delay: data.jump_delay,
+			bonk_delay: data.bonk_delay,
 		}
 		
 		return output
@@ -253,25 +352,4 @@ function LoadSound(path){
 	var sound = audio_create_stream(path)
 	
 	return sound
-}
-
-function LoadStage(tilemap, index)
-{
-	var lvl = global.level_list[global.ACTIVE_LEVEL]
-	
-	var img = lvl.leveldata.stages[index]
-	
-	var surf = surface_create(24, 64)
-	draw_clear(c_navy)
-	surface_set_target(surf)
-	draw_sprite(img, 0, 0, 0)
-	
-	for(var _x = 0; _x < 24; _x++)
-	{
-		for(var _y = 0; _y < 64; _y++)
-		{
-			if(surface_getpixel(surf, x,y) == c_white)
-				tilemap_set(tilemap, tile_index_mask, _x, _y)
-		}
-	}
 }

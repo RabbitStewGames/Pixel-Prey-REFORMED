@@ -1,0 +1,1 @@
+draw_sprite_stretched_ext(sprite_index, image_index, 0, 0, window_get_width(), window_get_height(), c_white, alpha)

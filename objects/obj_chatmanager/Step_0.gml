@@ -70,6 +70,38 @@ else
 	{
 		SCROLL_FINISHED = true	
 	}
+	
+	if(MESSAGES[CURRENT_MESSAGE].event == "delay")
+	{
+		SPECIAL_WAIT = MESSAGES[CURRENT_MESSAGE].args[0]
+		SCROLL_FINISHED = true
+		ACTION = true
+	}
+	
+	if(MESSAGES[CURRENT_MESSAGE].event == "image")
+	{
+		with(obj_chat_picture)
+		{
+			if(exists) exiting = true
+		}
+		
+		var pic = instance_create_depth(0, 0, depth+1, obj_chat_picture)
+		var img = LoadImage($"{global.ResourcePath}/levels/{global.level_list[global.ACTIVE_LEVEL].leveldata.directory}/images/{MESSAGES[CURRENT_MESSAGE].args[0]}")
+		pic.sprite_index = img
+		
+		SCROLL_FINISHED = true
+		ACTION = true
+	}
+	
+	if(MESSAGES[CURRENT_MESSAGE].event == "sound")
+	{
+		var sfx = LoadSound($"{global.ResourcePath}/levels/{global.level_list[global.ACTIVE_LEVEL].leveldata.directory}/audio/{MESSAGES[CURRENT_MESSAGE].args[0]}")	
+		
+		if(sfx != -1) audio_play_sound_on(obj_gamemanager.EMITTER_SFX, sfx, false, 0)
+		
+		SCROLL_FINISHED = true
+		ACTION = true
+	}
 
 	if(SCROLL_FINISHED)
 	{
@@ -88,4 +120,5 @@ else
 	{
 		endDialogue();
 	}
+	
 }

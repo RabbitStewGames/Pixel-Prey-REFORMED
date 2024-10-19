@@ -50,3 +50,13 @@ colorblend = c_white
 
 if(keyboard_check(vk_space) or keyboard_check(vk_escape) or keyboard_check(vk_enter) or mouse_check_button(mb_left))
 	room_goto(rm_title)
+	
+if(STAGE == 0 and CINNA_ANIMATE == true and ALPHA == 1){
+	FRAME_CINNA += 10/60
+	image_index = FRAME_CINNA
+	if(FRAME_CINNA > sprite_get_number(sprite_index))
+	{
+		CINNA_ANIMATE = false
+	}
+}
+else FRAME_CINNA = 0

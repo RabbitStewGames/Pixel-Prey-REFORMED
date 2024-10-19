@@ -1,3 +1,5 @@
+if(instance_exists(obj_ui_options)) return;
+
 if(ANIM_TIMER > 0) ANIM_TIMER--
 else{
 	ANIM_TIMER = ANIM_DELAY
@@ -8,8 +10,8 @@ else{
 	image_index = ANIM_FRAME
 }
 
-image_xscale = 4
-image_yscale = 4
+image_xscale = 4 * (global.GameScale/2)
+image_yscale = 4 * (global.GameScale/2)
 
 y = room_height - sprite_height
 x = room_width - sprite_width

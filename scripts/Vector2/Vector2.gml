@@ -62,6 +62,38 @@ function Vector2(_x, _y) constructor
 		return new Vector2(_newx, _newy)
 	}
 	
+	static Multiply = function(_vec1, _vec2)
+	{
+		_newx = _vec1.x * _vec2.x
+		_newy = _vec1.y * _vec2.y
+		
+		return new Vector2(_newx, _newy)
+	}
+	
+	static MultiplyReal = function(_vec1, _num)
+	{
+		_newx = _vec1.x * _num
+		_newy = _vec1.y * _num
+		
+		return new Vector2(_newx, _newy)
+	}
+	
+	static Lerp = function(from, to, t)
+	{
+		_newX = lerp(from.x, to.x, t)	
+		_newY = lerp(from.y, to.y, t)
+		
+		return new Vector2(_newx, _newy)
+	}
+	
+	static Divide = function(_vec1, _vec2)
+	{
+		_newx = _vec1.x / _vec2.x
+		_newy = _vec1.y / _vec2.y
+		
+		return new Vector2(_newx, _newy)
+	}
+	
 	static DirectionTo = function(_origin, _target)
 	{
 		var diff = Vector2.Subtract(_target, _origin)

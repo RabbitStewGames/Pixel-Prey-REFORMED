@@ -1,3 +1,4 @@
+if(instance_exists(obj_ui_options)) return;
 
 //x=clamp(x,global.GameWidth / 2, room_width - global.GameWidth / 2)
 //y=clamp(y,global.GameHeight / 2, room_height - global.GameHeight / 2)

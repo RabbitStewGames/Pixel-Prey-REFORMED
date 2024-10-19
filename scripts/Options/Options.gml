@@ -1,22 +1,64 @@
-gml_pragma("global", "Options_Init()")
-
 function Options_Init(){
-	global.keymap = {
-		left: vk_left,
-		right: vk_right,
-		jump: vk_space,
-		dash: vk_shift,
-		duck: vk_down,
-		up: vk_up
+	global.options = {
+		keymap: {
+			left: vk_left,
+			right: vk_right,
+			jump: vk_space,
+			dash: vk_shift,
+			duck: vk_down,
+			up: vk_up
+		},
+		volume: {
+			master: 1,
+			music: .5,
+			ambience: .8,
+			sfx: 1
+		},
+		fullscreen: false
 	}
+	
+	Options_Save()
 }
 
-function UpdateWindow(newScale){
-	window_set_size(global.GameWidth * newScale, global.GameHeight * newScale)	
-	global.GameScale = newScale
-	display_set_gui_size(global.GameWidth * newScale, global.GameHeight * newScale)
+function Options_Save(){
+	var jstring = json_stringify(global.options, true)
+	var file = file_text_open_write($"{program_directory}options.cfg")
+	file_text_write_string(file, jstring)
+	file_text_close(file)
+}
+
+function Options_Load(){
+	var file = file_text_open_read($"{program_directory}options.cfg")
+	var jstring = file_text_read_string(file)
+	var data = json_parse(jstring)
+	global.options = data
+	file_text_close(file)
+}
+
+function Options_Exists(){
+	return file_exists($"{program_directory}options.cfg")	
+}
+
+function UpdateWindow(newScale, fullscreen){
+	if(!fullscreen)
+	{
+		window_set_size(global.GameWidth * newScale, global.GameHeight * newScale)	
+		global.GameScale = newScale
+		display_set_gui_size(global.GameWidth * newScale, global.GameHeight * newScale)
 	
-	window_center()
+		window_set_showborder(true)
+		window_center()
+	}
+	else
+	{
+		global.GameScale = display_get_width() / global.GameWidth
+		window_set_size(display_get_width(), display_get_height())	
+		display_set_gui_size(display_get_width(), display_get_height())
+		window_set_position(0,0)
+		window_set_showborder(false)
+	}
+	
+	global.fullscreen = fullscreen
 	
 	if(instance_exists(obj_view))
 		obj_view.Reset()

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"LevelGen",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"LevelGen",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
