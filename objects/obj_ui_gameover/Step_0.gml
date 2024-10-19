@@ -143,6 +143,6 @@ sfxpitch = min(sfxpitch, 2)
 
 if(scoreCountFinished)
 {
-	if(keyboard_check_pressed(vk_space)) room_restart()
+	if(keyboard_check_pressed(vk_space)) obj_levelmanager.Restart()
 	if(keyboard_check(vk_escape)) room_goto(rm_title)
 }

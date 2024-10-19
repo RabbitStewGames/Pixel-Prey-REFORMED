@@ -2,9 +2,9 @@ audio_stop_all()
 
 ACTIVE_LEVEL = global.level_list[0]
 
-audio_play_sound_on(obj_gamemanager.EMITTER_MUSIC, ACTIVE_LEVEL.leveldata.music, 0, true)
-audio_play_sound_on(obj_gamemanager.EMITTER_MUSIC_MUFFLED, ACTIVE_LEVEL.leveldata.music_muffled, 0, true)
-audio_play_sound_on(obj_gamemanager.EMITTER_AMBIENCE, ACTIVE_LEVEL.leveldata.ambience, 0, true)
+audio_play_sound_on(obj_gamemanager.EMITTER_MUSIC, ACTIVE_LEVEL.leveldata.music, true, 0)
+audio_play_sound_on(obj_gamemanager.EMITTER_MUSIC_MUFFLED, ACTIVE_LEVEL.leveldata.music_muffled, true, 0)
+audio_play_sound_on(obj_gamemanager.EMITTER_AMBIENCE, ACTIVE_LEVEL.leveldata.ambience, true, 0)
 
 
 global.acid_height = 0
@@ -62,6 +62,11 @@ GetAverageTime = function(){
 	
 	
 	return avg
+}
+
+Restart = function(){
+	room_restart()
+	obj_view.TARGET = obj_player
 }
 
 NextStage()
