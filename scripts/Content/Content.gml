@@ -127,13 +127,8 @@ function LevelData(_data, _folder) constructor
 			var _levelname = data.leveldata.levelname
 			var _predname = data.leveldata.predname
 		
-			var _s_idle = LoadImage($"{global.ResourcePath}/levels/{levelfolder}/images/idle.png", data.images.idle_frames)
-			//var _s_talk = LoadImage($"{global.ResourcePath}/levels/{levelfolder}/images/{data.leveldata.s_idle}")
-			//var _s_tease = LoadImage($"{global.ResourcePath}/levels/{levelfolder}/images/{data.leveldata.s_idle}")
 			var _s_acid = LoadImage($"{global.ResourcePath}/levels/{levelfolder}/images/acid.png", data.images.acid_frames)
 			var _background_interior = LoadImage($"{global.ResourcePath}/levels/{levelfolder}/images/bg_interior.png")
-			
-			
 			
 			var _stages = []
 			
@@ -210,7 +205,6 @@ function LevelData(_data, _folder) constructor
 				music: LoadSound($"{global.ResourcePath}/levels/{levelfolder}/audio/music.ogg"),
 				music_muffled: LoadSound($"{global.ResourcePath}/levels/{levelfolder}/audio/music_muffled.ogg"),
 				ambience: LoadSound($"{global.ResourcePath}/levels/{levelfolder}/audio/ambience.ogg"),
-				s_idle: _s_idle,
 				s_acid: _s_acid,
 				s_goal: LoadImage($"{global.ResourcePath}/levels/{levelfolder}/images/goal.png"),
 				acid_speed: data.leveldata.acid_speed,
@@ -248,7 +242,7 @@ function LevelData(_data, _folder) constructor
 				
 		file_text_close(file)
 		
-		var cd = new ChatData(d)
+		var cd = new ChatData(d, folder)
 		
 		return cd
 	}
@@ -330,8 +324,9 @@ function PlayerData(_data, _folder) constructor{
 	
 }
 
-function ChatData(_data) constructor{
+function ChatData(_data, _folder) constructor{
 	
+	expressions = ChatData.GetExpressions(_data, _folder)
 	script = ChatData.Parse(_data);
 	
 	static Parse = function(data)
@@ -339,6 +334,27 @@ function ChatData(_data) constructor{
 		var _script = data.script
 		
 		return _script
+	}
+	
+	static GetExpressions = function(data, folder)
+	{
+		var _expressions = data.expressions
+		
+		var _output = {}
+		
+		var keys = variable_struct_get_names(_expressions)
+		for(var i = array_length(keys)-1; i >= 0; i--){
+			var k = keys[i]
+			var frames = _expressions[$ k].frames
+			var img = LoadImage($"{global.ResourcePath}/levels/{folder}/images/{_expressions[$ k].image}", frames)
+			
+			var e = {}
+			struct_set(e, "image", img)
+			struct_set(e, "frames", frames)
+			struct_set(_output, keys[i], e)
+		}
+		
+		return _output
 	}
 }
 

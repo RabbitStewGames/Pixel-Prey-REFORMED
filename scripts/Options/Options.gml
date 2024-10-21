@@ -1,12 +1,12 @@
 function Options_Init(){
 	global.options = {
 		keymap: {
-			left: vk_left,
-			right: vk_right,
+			left: ord("A"),
+			right: ord("D"),
 			jump: vk_space,
 			dash: vk_shift,
-			duck: vk_down,
-			up: vk_up
+			duck: ord("S"),
+			up: ord("W")
 		},
 		volume: {
 			master: 1,
