@@ -21,7 +21,7 @@ function Options_Init(){
 }
 
 function Options_Save(){
-	var jstring = json_stringify(global.options, true)
+	var jstring = json_stringify(global.options, false)
 	var file = file_text_open_write($"{program_directory}options.cfg")
 	file_text_write_string(file, jstring)
 	file_text_close(file)

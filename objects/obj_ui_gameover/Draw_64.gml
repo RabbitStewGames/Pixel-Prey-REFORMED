@@ -14,7 +14,7 @@ var textScale = 1
 var xRoot = 24
 var yRoot = global.GameHeight * global.GameScale / 8
 
-var textPadding = 16
+var textPadding = 16 * global.GameScale
 	
 if(doingScoreCount){
 	
@@ -35,7 +35,7 @@ if(doingScoreCount){
 	if(scoreCountPhase >= 2)
 		draw_text_transformed(xRoot, yRoot + 32 * textScale + textPadding * 2, $"K: {talliedKills}", textScale * global.GameScale, textScale * global.GameScale, 0)
 	if(scoreCountPhase >= 3 and collectibleSprite != -1){
-		draw_sprite_ext(collectibleSprite, collectibleSpriteFrame, xRoot, yRoot + 48 * textScale + textPadding * 3, textScale * 2, textScale * 2, 0, c_white, 1)
+		draw_sprite_ext(collectibleSprite, collectibleSpriteFrame, xRoot, yRoot + 48 * textScale + textPadding * 3, textScale * global.GameScale, textScale * global.GameScale, 0, c_white, 1)
 		draw_text_transformed(xRoot + 16 * textScale * 2, yRoot + 48 * textScale + textPadding * 3, $"C: {talliedCollectibles}", textScale * global.GameScale, textScale * global.GameScale, 0)
 	}
 	

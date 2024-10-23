@@ -134,8 +134,12 @@ if(doingScoreCount and !scoreCountFinished)
 					scoreCountPhase++
 					sfxpitch = 1
 				}
-				else
+				else if(talliedCollectibles < 50)
 					actionTimer = 2
+				else if(talliedCollectibles < 100)
+					actionTimer = 1
+				else
+					actionTimer = 0
 			}
 			else 
 			{
@@ -161,7 +165,7 @@ if(collectibleSprite != -1)
 	if(collectibleSpriteFrame > sprite_get_number(collectibleSprite)) collectibleSpriteFrame = 0
 }
 
-sfxpitch = min(sfxpitch, 2)
+sfxpitch = min(sfxpitch, 1.75)
 
 if(scoreCountFinished)
 {

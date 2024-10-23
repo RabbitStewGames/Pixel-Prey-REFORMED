@@ -118,6 +118,6 @@ else
 }
 
 
-if(highlighted) draw_sprite(s_ui_options_controlguide_2, 0, window_get_width() - sprite_get_width(s_ui_options_controlguide) - 8,window_get_height() - sprite_get_height(s_ui_options_controlguide) - sprite_get_height(s_ui_options_controlguide_2) - 16)
+if(highlighted) draw_sprite(s_ui_options_controlguide_2, 0, window_get_width() - sprite_get_width(s_ui_options_controlguide_2) - 8,window_get_height() - sprite_get_height(s_ui_options_controlguide) - sprite_get_height(s_ui_options_controlguide_2) - 16)
 
 draw_sprite(s_ui_options_controlguide, 0, window_get_width() - sprite_get_width(s_ui_options_controlguide) - 8,window_get_height() - sprite_get_height(s_ui_options_controlguide) - 8)

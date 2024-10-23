@@ -39,3 +39,9 @@ draw_text_shadow(8, window_get_height() - 24 - 8, "Made for TUMMY JAM Oct 2024",
 
 
 draw_text_shadow(window_get_width() - 64, window_get_height() - 24 - 8, GM_version, 1,1,0, c_ltgray)
+
+draw_text_shadow(window_get_width() - 192 * global.GameScale, 32, "A/D - Run",1,1,0,c_white)
+draw_text_shadow(window_get_width() - 192 * global.GameScale, 64, "Space - Jump",1,1,0,c_white)
+draw_text_shadow(window_get_width() - 192 * global.GameScale, 96, "Shift - Dash",1,1,0,c_white)
+draw_text_shadow(window_get_width() - 192 * global.GameScale, 128, "S - Duck / Charge Super Jump",1,1,0,c_white)
+draw_text_shadow(window_get_width() - 192 * global.GameScale, 160, "W - Look up",1,1,0,c_white)

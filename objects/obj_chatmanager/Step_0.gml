@@ -47,13 +47,13 @@ else
 						{
 							case "pred":
 							
-							audio_play_sound(global.level_list[global.ACTIVE_LEVEL].leveldata.sfx_talk, 0, false, 1, 0, random_range(.8, 1.2))
+							audio_play_sound_on(obj_gamemanager.EMITTER_SFX, global.level_list[global.ACTIVE_LEVEL].leveldata.sfx_talk, false, 0, 1, 0, random_range(.8, 1.2))
 							
 							break
 							
 							case "you":
 							
-							audio_play_sound(global.player_list[0].playerdata.sfx_talk, 1, false, 1, 0, random_range(.8, 1.2))
+							audio_play_sound_on(obj_gamemanager.EMITTER_SFX, global.player_list[0].playerdata.sfx_talk, false, 0, 1, 0, random_range(.8, 1.2))
 							
 							break
 						}

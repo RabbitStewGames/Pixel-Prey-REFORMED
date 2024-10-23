@@ -44,7 +44,7 @@ else
 		switch (selected)
 		{
 			case Option.GameScale:
-				UpdateWindow(max(global.GameScale-.25, 1), global.fullscreen)
+				UpdateWindow(max(global.GameScale-.25, 2), global.fullscreen)
 			break
 			case Option.Fullscreen:
 				if(global.options.fullscreen) UpdateWindow(global.GameScale, false)

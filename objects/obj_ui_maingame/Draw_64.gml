@@ -8,8 +8,8 @@ draw_text_shadow(16 * global.GameScale, 16 * global.GameScale, global.playerhp,g
 
 if(array_length(global.scoreboard.collectibles) > 0)
 {
-	draw_sprite_ext(collectible_sprite, collectible_frame, 16, 72, global.GameScale, global.GameScale,0,c_white, 1)
+	draw_sprite_ext(collectible_sprite, collectible_frame, 8 * global.GameScale, 48 * global.GameScale, global.GameScale, global.GameScale,0,c_white, 1)
 	
-	draw_text_shadow(24 * global.GameScale, 40 * global.GameScale, array_length(global.scoreboard.collectibles) ,global.GameScale/1.5,global.GameScale/1.5,0, c_white)
+	draw_text_shadow(24 * global.GameScale, 48 * global.GameScale, array_length(global.scoreboard.collectibles) ,global.GameScale/1.5,global.GameScale/1.5,0, c_white)
 
 }
