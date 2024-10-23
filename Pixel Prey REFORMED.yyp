@@ -51,6 +51,7 @@
     {"$GMIncludedFile":"","%Name":"door_tricksmug.png","CopyToMask":-1,"filePath":"datafiles/resources/levels/trickortreat/images","name":"door_tricksmug.png","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"gameover_1.png","CopyToMask":-1,"filePath":"datafiles/resources/levels/trickortreat/images","name":"gameover_1.png","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"gameover_2.png","CopyToMask":-1,"filePath":"datafiles/resources/levels/trickortreat/images","name":"gameover_2.png","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+    {"$GMIncludedFile":"","%Name":"gameover_3.png","CopyToMask":-1,"filePath":"datafiles/resources/levels/trickortreat/images","name":"gameover_3.png","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"goal.png","CopyToMask":-1,"filePath":"datafiles/resources/levels/trickortreat/images","name":"goal.png","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"indoor_huh.png","CopyToMask":-1,"filePath":"datafiles/resources/levels/trickortreat/images","name":"indoor_huh.png","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"indoor_normal.png","CopyToMask":-1,"filePath":"datafiles/resources/levels/trickortreat/images","name":"indoor_normal.png","resourceType":"GMIncludedFile","resourceVersion":"2.0",},

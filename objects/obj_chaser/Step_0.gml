@@ -1,12 +1,14 @@
-
-
+if(active_animation == attributes.anim.capture)
+	image_speed = .5
+else
+	image_speed = 1
 
 if(active_animation != attributes.anim.capture and image_index > active_animation[array_length(active_animation)-1] or image_index < active_animation[0])
 	image_index = active_animation[0]
 	
 if(active_animation == attributes.anim.capture){
 	if(image_index < active_animation[0]) image_index = active_animation[0]
-	else if(image_index > active_animation[array_length(active_animation)-1]) active_animation = attributes.anim.hold
+	else if(image_index >= active_animation[array_length(active_animation)-1]) active_animation = attributes.anim.hold
 }
 
 if(obj_player.STATE == PlayerState.Dead and !dead_af){
