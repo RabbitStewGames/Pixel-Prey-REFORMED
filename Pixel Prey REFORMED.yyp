@@ -105,6 +105,7 @@
     {"$GMIncludedFile":"","%Name":"splash.ogg","CopyToMask":-1,"filePath":"datafiles/resources/players/default","name":"splash.ogg","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"swim.ogg","CopyToMask":-1,"filePath":"datafiles/resources/players/default","name":"swim.ogg","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"talk.ogg","CopyToMask":-1,"filePath":"datafiles/resources/players/default","name":"talk.ogg","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+    {"$GMIncludedFile":"","%Name":"titlescreen.png","CopyToMask":-1,"filePath":"datafiles/resources","name":"titlescreen.png","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
   ],
   "isEcma":false,
   "LibraryEmitters":[],

@@ -1,4 +1,4 @@
-if(global.halloweenEvent) draw_sprite_stretched(s_titlebg_halloween, 0, 0, 0, window_get_width(), window_get_height())
+draw_sprite_stretched(global.titlescreen, 0, 0, 0, window_get_width(), window_get_height())
 
 draw_set_alpha(.75)
 draw_set_color(c_black)

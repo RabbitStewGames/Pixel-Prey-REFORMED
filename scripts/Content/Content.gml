@@ -9,6 +9,7 @@ function LoadContent()
 	global.player_list = []
 	
 	global.titlemusic = LoadSound($"{global.ResourcePath}/mus_titlescreen.ogg")
+	global.titlescreen = LoadImage($"{global.ResourcePath}/titlescreen.png")
 	
 	if(directory_exists(global.ResourcePath))
 	{
