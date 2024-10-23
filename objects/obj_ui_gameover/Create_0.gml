@@ -1,4 +1,12 @@
-doingScoreCount = true
+image_alpha = 0
+
+doingFailAnimation = true
+fail_animation = global.level_list[global.ACTIVE_LEVEL].leveldata.gameovers[irandom(array_length(global.level_list[global.ACTIVE_LEVEL].leveldata.gameovers)-1)]
+failAnimationTimer = 180
+failAnimFrame = 0
+failAnimFrameTimer = 15
+
+doingScoreCount = false
 scoreCountFinished = false
 actionTimer = 0
 scoreCountPhase = 0

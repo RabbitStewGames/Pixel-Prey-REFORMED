@@ -119,6 +119,29 @@ else
 	if(CURRENT_MESSAGE >= array_length(MESSAGES))
 	{
 		endDialogue();
+		return
 	}
 	
+}
+
+if(MESSAGES[CURRENT_MESSAGE].expression != "none")
+{
+	if(SCROLL_FINISHED or SPECIAL_WAIT > 0)
+	{
+		EXPRESSION_TIMER = 0
+		EXPRESSION_FRAME = 0
+	}
+	else
+	{
+		if(EXPRESSION_TIMER > 0) EXPRESSION_TIMER--
+		else
+		{
+			var frames = struct_get(global.level_list[global.ACTIVE_LEVEL].chatdata.expressions, MESSAGES[CURRENT_MESSAGE].expression).frames
+		
+			EXPRESSION_FRAME++
+			if(EXPRESSION_FRAME >= frames) EXPRESSION_FRAME = 0
+		
+			EXPRESSION_TIMER = 5
+		}
+	}
 }

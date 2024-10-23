@@ -164,6 +164,21 @@ function LevelData(_data, _folder) constructor
 			
 			
 			
+			var __gameovers = data.gameovers
+			var _gameovers = []
+			
+			for(var i = 0; i < array_length(__gameovers); i++)
+			{
+				var g = {
+					image: LoadImage($"{global.ResourcePath}/levels/{levelfolder}/images/{__gameovers[i].image}", __gameovers[i].frames),
+					frames: __gameovers[i].frames
+				}
+				
+				array_push(_gameovers, g)
+			}
+			
+			
+			
 			var _chaser = -1
 			
 			if(directory_exists($"{global.ResourcePath}/levels/{levelfolder}/obstacle/chaser")){
@@ -202,6 +217,7 @@ function LevelData(_data, _folder) constructor
 				directory: levelfolder,
 				levelname: _levelname,
 				predname: _predname,
+				gameovers: _gameovers,
 				music: LoadSound($"{global.ResourcePath}/levels/{levelfolder}/audio/music.ogg"),
 				music_muffled: LoadSound($"{global.ResourcePath}/levels/{levelfolder}/audio/music_muffled.ogg"),
 				ambience: LoadSound($"{global.ResourcePath}/levels/{levelfolder}/audio/ambience.ogg"),

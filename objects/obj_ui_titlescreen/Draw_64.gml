@@ -33,3 +33,9 @@ if(transition_timer_exit > 0) {
 }
 
 draw_set_alpha(1)
+draw_text_shadow(8, window_get_height() - 72 - 8, "Created by Rabbit Stew and Duke Ferret",1,1,0, c_ltgray)
+draw_text_shadow(8, window_get_height() - 48 - 8, "Music by Asra // SFX by Jeshke",1,1,0, c_ltgray)
+draw_text_shadow(8, window_get_height() - 24 - 8, "Made for TUMMY JAM Oct 2024",1,1,0, c_ltgray)
+
+
+draw_text_shadow(window_get_width() - 64, window_get_height() - 24 - 8, GM_version, 1,1,0, c_ltgray)

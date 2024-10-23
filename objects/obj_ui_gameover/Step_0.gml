@@ -1,3 +1,25 @@
+image_alpha += 1/60
+
+if(doingFailAnimation)
+{
+	if(failAnimationTimer > 0) failAnimationTimer--
+	else
+	{
+		doingScoreCount = true	
+		doingFailAnimation = false
+	}
+	
+}
+
+if(failAnimFrameTimer > 0) failAnimFrameTimer--
+	else
+	{
+		failAnimFrameTimer = 15
+		failAnimFrame++
+		
+		if(failAnimFrame >= fail_animation.frames) failAnimFrame = 0
+	}
+
 if(doingScoreCount and !scoreCountFinished)
 {
 	actionTimer--

@@ -62,7 +62,6 @@ function LoadStage(tilemap, decormap, index)
 			if(col == c_yellow) instance_create_layer(_x * CELL_WIDTH, _y * CELL_HEIGHT, "Instances", obj_collectible)
 			
 			if(col == c_blue){
-				show_debug_message(global.level_list[global.ACTIVE_LEVEL].leveldata.chaser)
 				instance_create_layer(_x * CELL_WIDTH, _y * CELL_HEIGHT, "Instances", obj_chaser)
 			}
 		}

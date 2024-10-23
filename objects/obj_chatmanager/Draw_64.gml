@@ -1,17 +1,20 @@
 var padding = 16
 var margin = 16
 
-var rootY = (window_get_height()) - (160 * global.GameScale / 2) - padding * 2
+var boxHeight = (160 * global.GameScale / 2)
+
+var rootY = (window_get_height()) - boxHeight - padding * 2
+
+
 
 if(MESSAGES[CURRENT_MESSAGE].message != "") 
-	draw_sprite_stretched(s_messagebox, -1, padding, rootY + padding, window_get_width() - padding * 2, (160 * global.GameScale / 2))
+	draw_sprite_stretched(s_messagebox, -1, padding, rootY + padding, window_get_width() - padding * 2, boxHeight)
 
 if(MESSAGES[CURRENT_MESSAGE].expression != "" and MESSAGES[CURRENT_MESSAGE].expression != "none")
 {
 	var sprite = struct_get(global.level_list[global.ACTIVE_LEVEL].chatdata.expressions, MESSAGES[CURRENT_MESSAGE].expression).image
-	show_debug_message(sprite)
-	draw_sprite_stretched(sprite, 0, padding + 4, rootY + padding + 4, (180 * global.GameScale / 2) - 8, (160 * global.GameScale / 2) - 8)
-	margin += (160 * global.GameScale / 2)
+	draw_sprite_stretched(sprite, EXPRESSION_FRAME, padding + 4, rootY + padding + 4, boxHeight - 8, boxHeight - 8)
+	margin += boxHeight
 }
 
 if(MESSAGES[CURRENT_MESSAGE].message != "") 
@@ -33,5 +36,5 @@ if(SCROLL_FINISHED)
 		if(CURSORINDEX >= 7) CURSORINDEX = 0
 	}
 	
-	draw_sprite(s_messagebox_next, CURSORINDEX, window_get_width() - padding - 24, rootY + 120)
+	draw_sprite(s_messagebox_next, CURSORINDEX, window_get_width() - padding - 24, rootY + boxHeight)
 }
