@@ -10,6 +10,10 @@ if(doingFailAnimation)
 	}
 	
 }
+else
+{
+	failXOffset = towards(failXOffset, 100, .05)	
+}
 
 if(failAnimFrameTimer > 0) failAnimFrameTimer--
 	else

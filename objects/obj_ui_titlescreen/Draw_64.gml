@@ -19,18 +19,6 @@ if(state == 0)
 	draw_sprite_ext(s_title_clicktostart, 0, window_get_width()/2, window_get_height()-100, global.GameScale-.5, global.GameScale-.5, 0, c_white, 1)
 }
 
-if(transition_timer > 0) {
-	draw_set_color(c_black)
-	draw_set_alpha(transition_timer / 60)
-	draw_rectangle(0, 0, window_get_width(), window_get_height(), false)
-}
-
-
-if(transition_timer_exit > 0) {
-	draw_set_color(c_black)
-	draw_set_alpha(max(1 - transition_timer_exit / 60, 0))
-	draw_rectangle(0, 0, window_get_width(), window_get_height(), false)
-}
 
 draw_set_alpha(1)
 draw_text_shadow(8, window_get_height() - 72 - 8, "Created by Rabbit Stew and Duke Ferret",1,1,0, c_ltgray)
@@ -45,3 +33,16 @@ draw_text_shadow(window_get_width() - 192 * global.GameScale, 64, "Space - Jump"
 draw_text_shadow(window_get_width() - 192 * global.GameScale, 96, "Shift - Dash",1,1,0,c_white)
 draw_text_shadow(window_get_width() - 192 * global.GameScale, 128, "S - Duck / Charge Super Jump",1,1,0,c_white)
 draw_text_shadow(window_get_width() - 192 * global.GameScale, 160, "W - Look up",1,1,0,c_white)
+
+if(transition_timer > 0) {
+	draw_set_color(c_black)
+	draw_set_alpha(transition_timer / 60)
+	draw_rectangle(0, 0, window_get_width(), window_get_height(), false)
+}
+
+
+if(transition_timer_exit > 0) {
+	draw_set_color(c_black)
+	draw_set_alpha(max(1 - transition_timer_exit / 60, 0))
+	draw_rectangle(0, 0, window_get_width(), window_get_height(), false)
+}

@@ -1,14 +1,12 @@
-
-
-
 draw_set_alpha(image_alpha)
 
-var go_xRoot = 77 * 2 * global.GameScale
+var go_xRoot = 77 * 2 * global.GameScale + failXOffset * global.GameScale
 var go_yRoot = 12 * 2 * global.GameScale
 
 draw_sprite_stretched(fail_animation.image, failAnimFrame, go_xRoot, go_yRoot, 166 * global.GameScale * 2, 117 * global.GameScale * 2)
-draw_sprite_stretched(s_gameover_fg, 0, 0, 0, global.GameWidth * global.GameScale, global.GameHeight * global.GameScale)
-
+draw_sprite_stretched(s_gameover_fg, 0, failXOffset * global.GameScale, 0, global.GameWidth * global.GameScale, global.GameHeight * global.GameScale)
+draw_set_color(c_black)
+draw_rectangle(0,0,failXOffset * global.GameScale, window_get_height(), false)
 var textScale = 1
 
 var xRoot = 24
@@ -18,9 +16,9 @@ var textPadding = 16 * global.GameScale
 	
 if(doingScoreCount){
 	
-	draw_set_color(c_black)
-	draw_set_alpha(.5)
-	draw_rectangle(0,0,window_get_width(), window_get_height(), false)
+	//draw_set_color(c_black)
+	//draw_set_alpha(.5)
+	//draw_rectangle(0,0,window_get_width(), window_get_height(), false)
 	
 	
 	

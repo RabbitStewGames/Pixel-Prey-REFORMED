@@ -4,6 +4,7 @@ doingFailAnimation = true
 fail_animation = global.level_list[global.ACTIVE_LEVEL].leveldata.gameovers[irandom(array_length(global.level_list[global.ACTIVE_LEVEL].leveldata.gameovers)-1)]
 failAnimationTimer = 180
 failAnimFrame = 0
+failXOffset = 0
 failAnimFrameTimer = 15
 
 doingScoreCount = false
@@ -24,6 +25,8 @@ score_per_stage = 200
 time_score = 100000
 
 sfxpitch = 1
+
+
 
 global.scoreboard.farthest_stage = obj_levelmanager.CURRENT_STAGE-1
 global.scoreboard.average_time = obj_levelmanager.GetAverageTime()
