@@ -1,3 +1,4 @@
+draw_set_alpha(1)
 draw_sprite_stretched(global.titlescreen, 0, 0, 0, window_get_width(), window_get_height())
 
 draw_set_alpha(.75)

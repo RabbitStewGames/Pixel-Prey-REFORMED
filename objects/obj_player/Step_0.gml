@@ -10,7 +10,7 @@ if(!instance_exists(obj_ui_options))
 	if(IMMUNITY > 0) IMMUNITY--
 	
 
-if(STATE == PlayerState.Dead){
+if(STATE == PlayerState.Dead and !instance_exists(obj_chatbox_ingame)){
 	DeathTimer--
 	
 	if(DeathTimer <= 0)

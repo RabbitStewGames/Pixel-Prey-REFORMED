@@ -131,6 +131,7 @@
     {"id":{"name":"obj_afterimage","path":"objects/obj_afterimage/obj_afterimage.yy",},},
     {"id":{"name":"obj_chaser","path":"objects/obj_chaser/obj_chaser.yy",},},
     {"id":{"name":"obj_chat_picture","path":"objects/obj_chat_picture/obj_chat_picture.yy",},},
+    {"id":{"name":"obj_chatbox_ingame","path":"objects/obj_chatbox_ingame/obj_chatbox_ingame.yy",},},
     {"id":{"name":"obj_chatmanager","path":"objects/obj_chatmanager/obj_chatmanager.yy",},},
     {"id":{"name":"obj_clip","path":"objects/obj_clip/obj_clip.yy",},},
     {"id":{"name":"obj_collectible","path":"objects/obj_collectible/obj_collectible.yy",},},

@@ -82,7 +82,7 @@ if(doingScoreCount and !scoreCountFinished)
 					if(abs(talliedAvgTime - global.scoreboard.average_time) < .5) 
 					{
 						talliedAvgTime = global.scoreboard.average_time
-						talliedScore += floor(time_score / talliedAvgTime)
+						talliedScore += floor((time_score * talliedStages) / (talliedAvgTime/4))
 						actionTimer = 30
 						scoreCountPhase++
 						sfxpitch = 1

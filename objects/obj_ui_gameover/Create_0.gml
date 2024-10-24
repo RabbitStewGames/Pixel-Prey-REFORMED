@@ -22,7 +22,7 @@ collectibleSpriteFrame = 0
 
 score_per_kill = 25
 score_per_stage = 200
-time_score = 100000
+time_score = 2000
 
 sfxpitch = 1
 

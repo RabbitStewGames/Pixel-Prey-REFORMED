@@ -115,6 +115,11 @@ DamageMe = function(src, amt, ignore_immunity = false)
 		if(global.playerhp == 0) OnDeath(src)
 		
 		IMMUNITY = 120 * amt
+		
+		if(random(1) > .75 and !instance_exists(obj_chatbox_ingame)) {
+			var cb = instance_create_layer(0,0, "UI", obj_chatbox_ingame)
+			cb.MESSAGES = global.level_list[global.ACTIVE_LEVEL].chatdata.ingame.damage[irandom(array_length(global.level_list[global.ACTIVE_LEVEL].chatdata.ingame.damage)-1)]
+		}
 	}
 }
 
@@ -122,6 +127,11 @@ OnDeath = function(src)
 {
 	STATE = PlayerState.Dead
 	DeathTimer = 60
+	
+	if(instance_exists(obj_chatbox_ingame)) instance_destroy(obj_chatbox_ingame)
+	
+	var cb = instance_create_layer(0,0, "UI", obj_chatbox_ingame)
+	cb.MESSAGES = global.level_list[global.ACTIVE_LEVEL].chatdata.ingame.fail[irandom(array_length(global.level_list[global.ACTIVE_LEVEL].chatdata.ingame.fail)-1)]
 }
 
 enum DamageSource
