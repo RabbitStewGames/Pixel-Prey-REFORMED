@@ -1,5 +1,27 @@
 image_alpha += 1/60
 
+if(failMessage == "")
+{
+	if(deathSource == DamageSource.Generic)
+		failMessage = "You failed..."
+	else{
+		switch(deathSource)
+		{
+			case DamageSource.Acid:
+		
+			failMessage = global.level_list[global.ACTIVE_LEVEL].chatdata.fails.acid[irandom(array_length(global.level_list[global.ACTIVE_LEVEL].chatdata.fails.acid)-1)]
+			
+			break
+			
+			case DamageSource.Chaser:
+		
+			failMessage = global.level_list[global.ACTIVE_LEVEL].chatdata.fails.chaser[irandom(array_length(global.level_list[global.ACTIVE_LEVEL].chatdata.fails.chaser)-1)]
+			
+			break
+		}
+	}
+}
+
 if(doingFailAnimation)
 {
 	if(failAnimationTimer > 0) failAnimationTimer--

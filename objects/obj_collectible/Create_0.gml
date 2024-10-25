@@ -14,3 +14,5 @@ spd = 0
 
 X_SCREEN = 0
 Y_SCREEN = 0
+SCALEX_SCREEN = image_xscale * global.GameScale * obj_view.ZOOM
+SCALEY_SCREEN = image_yscale * global.GameScale * obj_view.ZOOM

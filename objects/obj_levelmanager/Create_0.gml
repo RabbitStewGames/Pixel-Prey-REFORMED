@@ -1,16 +1,17 @@
 audio_stop_all()
+ fadein = 1;
 
-ACTIVE_LEVEL = global.level_list[0]
+ACTIVE_LEVEL = global.level_list[0];
 
 audio_play_sound_on(obj_gamemanager.EMITTER_MUSIC, ACTIVE_LEVEL.leveldata.music, true, 0)
 audio_play_sound_on(obj_gamemanager.EMITTER_MUSIC_MUFFLED, ACTIVE_LEVEL.leveldata.music_muffled, true, 0)
 audio_play_sound_on(obj_gamemanager.EMITTER_AMBIENCE, ACTIVE_LEVEL.leveldata.ambience, true, 0)
 
 
-global.acid_height = 0
-global.acid_speed = global.level_list[0].leveldata.acid_speed
-global.playerhp_max = global.player_list[0].playerdata.hp
-global.playerhp = global.playerhp_max
+global.acid_height = 0;
+global.acid_speed = global.level_list[0].leveldata.acid_speed;
+global.playerhp_max = global.player_list[0].playerdata.hp;
+global.playerhp = global.playerhp_max;
 
 global.scoreboard = {
 	collectibles:[],
@@ -48,6 +49,8 @@ NextStage = function(){
 		}
 	}
 	
+	show_debug_message("Attempting to load stage")
+	show_debug_message(array_length(global.level_list[global.ACTIVE_LEVEL].leveldata.stages))
 	LoadStage(TILEMAP, DECORMAP, irandom(array_length(global.level_list[global.ACTIVE_LEVEL].leveldata.stages)-1))
 	
 	obj_player.STATE = PlayerState.Default
@@ -80,4 +83,4 @@ var cb = instance_create_layer(0,0, "UI", obj_chatbox_ingame)
 cb.MESSAGES = global.level_list[global.ACTIVE_LEVEL].chatdata.ingame.start[irandom(array_length(global.level_list[global.ACTIVE_LEVEL].chatdata.ingame.start)-1)]
 
 
-NextStage()
+NextStage();

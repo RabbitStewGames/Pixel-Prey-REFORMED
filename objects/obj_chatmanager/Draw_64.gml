@@ -5,6 +5,7 @@ var boxHeight = (160 * global.GameScale / 2)
 
 var rootY = (window_get_height()) - boxHeight - padding * 2
 
+draw_set_alpha(1)
 
 
 if(MESSAGES[CURRENT_MESSAGE].message != "") 
@@ -38,3 +39,7 @@ if(SCROLL_FINISHED)
 	
 	draw_sprite(s_messagebox_next, CURSORINDEX, window_get_width() - padding - 24, rootY + boxHeight)
 }
+
+draw_set_alpha(EXIT_FADE)
+draw_set_color(c_black)
+draw_rectangle(0,0,window_get_width(), window_get_height(), false)

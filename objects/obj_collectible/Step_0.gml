@@ -12,11 +12,13 @@ if(!COLLECTED and place_meeting(x,y,obj_player))
 
 if(COLLECTED){
 	spd += 1/60
-	X_SCREEN = towards(X_SCREEN, 0, spd)
-	Y_SCREEN = towards(Y_SCREEN, 0, spd)	
+	SCALEX_SCREEN = towards(SCALEX_SCREEN, global.GameScale, spd)
+	SCALEY_SCREEN = towards(SCALEY_SCREEN, global.GameScale, spd)
+	X_SCREEN = towards(X_SCREEN, 48 * global.GameScale,  spd)
+	Y_SCREEN = towards(Y_SCREEN, 8 * global.GameScale, spd)	
 }
 
-if(X_SCREEN < 16 and Y_SCREEN < 16 and COLLECTED){
+if(X_SCREEN < 48 * global.GameScale + 16 and Y_SCREEN < 8 * global.GameScale + 16 and COLLECTED){
 	array_push(global.scoreboard.collectibles,COLLECTIBLE)	
 	
 	if(random(1) > .9) global.playerhp = min(global.playerhp+1,global.playerhp_max)

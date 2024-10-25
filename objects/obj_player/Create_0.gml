@@ -123,8 +123,18 @@ DamageMe = function(src, amt, ignore_immunity = false)
 	}
 }
 
+enum DamageSource
+{
+	Generic,
+	Acid,
+	Chaser,
+}
+
+deathSource = DamageSource.Generic
+
 OnDeath = function(src)
 {
+	deathSource = src
 	STATE = PlayerState.Dead
 	DeathTimer = 60
 	
@@ -134,12 +144,7 @@ OnDeath = function(src)
 	cb.MESSAGES = global.level_list[global.ACTIVE_LEVEL].chatdata.ingame.fail[irandom(array_length(global.level_list[global.ACTIVE_LEVEL].chatdata.ingame.fail)-1)]
 }
 
-enum DamageSource
-{
-	Generic,
-	Acid,
-	Chaser,
-}
+
 
 isfree = function(_x,_y)
 {

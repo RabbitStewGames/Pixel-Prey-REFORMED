@@ -17,8 +17,6 @@ var endDialogue = function()
 
 image_xscale = display_get_width() / 64 - (offset / 64)
 
-if(keyboard_check_pressed(vk_escape)) endDialogue()
-
 if(exiting) return;
 
 if(SPECIAL_WAIT > 0) SPECIAL_WAIT--
@@ -91,6 +89,7 @@ else
 	if(CURRENT_MESSAGE >= array_length(MESSAGES))
 	{
 		CURRENT_MESSAGE = array_length(MESSAGES)-1
+		audio_play_sound_on(obj_gamemanager.EMITTER_SFX, sfx_chatbox_close, false, 0)
 		endDialogue();
 		return
 	}

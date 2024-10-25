@@ -1,1 +1,1 @@
-if(COLLECTED) draw_sprite_ext(sprite_index, image_index, X_SCREEN, Y_SCREEN, image_xscale * global.GameScale * obj_view.ZOOM, image_yscale * global.GameScale * obj_view.ZOOM, 0, c_white, 1)
+if(COLLECTED) draw_sprite_ext(sprite_index, image_index, X_SCREEN, Y_SCREEN, SCALEX_SCREEN, SCALEY_SCREEN, 0, c_white, 1)

@@ -1,11 +1,17 @@
 var endDialogue = function()
 {
-	room_goto(rm_tummy)
+	EXITING = true
 }
 
 image_xscale = display_get_width() / 64
 
 if(keyboard_check_pressed(vk_escape)) endDialogue()
+
+if(EXITING == true) {
+	EXIT_FADE += 1/60
+	if(EXIT_FADE >= 1) room_goto(rm_tummy)
+	return;
+}
 
 if(SPECIAL_WAIT > 0) SPECIAL_WAIT--
 else
@@ -118,6 +124,7 @@ else
 
 	if(CURRENT_MESSAGE >= array_length(MESSAGES))
 	{
+		CURRENT_MESSAGE = array_length(MESSAGES) - 1
 		endDialogue();
 		return
 	}

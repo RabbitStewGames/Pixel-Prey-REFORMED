@@ -31,6 +31,8 @@ function LoadStage(tilemap, decormap, index)
 	
 	// Surface creation
 	
+	draw_set_color(c_white)
+	draw_set_alpha(1)
 	var surf = surface_create(width_, height_)
 	draw_clear(c_black)
 	surface_set_target(surf)

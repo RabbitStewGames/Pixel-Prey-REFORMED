@@ -25,3 +25,5 @@ NEXT_TIMER = 0
 
 boxHeight = 0
 exiting = false
+
+audio_play_sound_on(obj_gamemanager.EMITTER_SFX, sfx_chatbox_open, false, 0)

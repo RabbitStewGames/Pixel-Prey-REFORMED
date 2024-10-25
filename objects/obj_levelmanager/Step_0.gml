@@ -11,3 +11,6 @@ else
 
 if(!instance_exists(obj_ui_options) and !instance_exists(obj_stagetransition) and !instance_exists(obj_ui_gameover))
 	STAGE_TIME += 1/fps
+	
+	
+ if(fadein > 0) fadein -= 1/60

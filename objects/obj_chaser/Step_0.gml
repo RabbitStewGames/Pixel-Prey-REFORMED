@@ -46,7 +46,7 @@ if(place_meeting(x,y,obj_player) and !ate_player and obj_player.STATE == PlayerS
 		death_timer = 60
 		audio_play_sound_on(obj_gamemanager.EMITTER_SFX, attributes.sfx_death, false, 0)	
 	}
-	else
+	else if(obj_player.IMMUNITY <= 0)
 	{
 		audio_play_sound_on(obj_gamemanager.EMITTER_SFX, attributes.sfx_capture, false, 0)	
 		escape_progress = 0

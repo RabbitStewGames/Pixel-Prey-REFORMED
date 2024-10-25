@@ -26,7 +26,8 @@ time_score = 2000
 
 sfxpitch = 1
 
-
+deathSource = DamageSource.Generic
+failMessage = ""
 
 global.scoreboard.farthest_stage = obj_levelmanager.CURRENT_STAGE-1
 global.scoreboard.average_time = obj_levelmanager.GetAverageTime()

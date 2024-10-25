@@ -346,6 +346,7 @@ function ChatData(_data, _folder) constructor{
 	expressions = ChatData.GetExpressions(_data, _folder)
 	script = ChatData.Parse(_data);
 	ingame = _data.ingame
+	fails = _data.fails
 	
 	static Parse = function(data)
 	{

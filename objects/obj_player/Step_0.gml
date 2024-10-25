@@ -13,8 +13,10 @@ if(!instance_exists(obj_ui_options))
 if(STATE == PlayerState.Dead and !instance_exists(obj_chatbox_ingame)){
 	DeathTimer--
 	
-	if(DeathTimer <= 0)
-		instance_create_depth(0,0,-9999, obj_ui_gameover)
+	if(DeathTimer <= 0){
+		var go = instance_create_depth(0,0,-9999, obj_ui_gameover)
+		go.deathSource = deathSource
+	}
 	
 	return	
 }
@@ -54,8 +56,7 @@ if(GROUNDED)
 			VEL.x = towards(VEL.x, -MOVE_SPEED/4, .8)
 		}
 		
-		if(!LEFT and !RIGHT) JUMPBOOST_TIMER--
-		else JUMPBOOST_TIMER = 30
+		JUMPBOOST_TIMER--
 	}
 	else if(!UP) {
 		if ((!LEFT and !RIGHT) or (LEFT and RIGHT))

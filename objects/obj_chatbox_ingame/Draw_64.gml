@@ -12,7 +12,7 @@ if(MESSAGES[CURRENT_MESSAGE].message != "")
 if(MESSAGES[CURRENT_MESSAGE].expression != "" and MESSAGES[CURRENT_MESSAGE].expression != "none")
 {
 	var sprite = struct_get(global.level_list[global.ACTIVE_LEVEL].chatdata.expressions, MESSAGES[CURRENT_MESSAGE].expression).image
-	draw_sprite_stretched(sprite, EXPRESSION_FRAME, offset + padding + 4, rootY + padding + 4, boxHeight - 8, boxHeight - 8)
+	draw_sprite_stretched(sprite, EXPRESSION_FRAME, offset + padding + 4, rootY + padding + 4, (128 * global.GameScale / 2) - 8, boxHeight - 8)
 	margin += boxHeight
 }
 
