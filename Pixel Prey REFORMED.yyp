@@ -25,6 +25,7 @@
     {"$GMFolder":"","%Name":"Tiles","folderPath":"folders/Tiles.yy","name":"Tiles","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
   "IncludedFiles":[
+    {"$GMIncludedFile":"","%Name":"001 - Modding Overview.txt","CopyToMask":-1,"filePath":"datafiles/resources/documentation","name":"001 - Modding Overview.txt","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"key.png","CopyToMask":-1,"filePath":"datafiles/resources","name":"key.png","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"attributes.json","CopyToMask":-1,"filePath":"datafiles/resources/levels/trickortreat","name":"attributes.json","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"ambience.ogg","CopyToMask":-1,"filePath":"datafiles/resources/levels/trickortreat/audio","name":"ambience.ogg","resourceType":"GMIncludedFile","resourceVersion":"2.0",},

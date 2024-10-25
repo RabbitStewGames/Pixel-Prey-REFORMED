@@ -39,7 +39,14 @@ NextStage = function(){
 	CURRENT_STAGE++
 	
 	
-	if(CURRENT_STAGE % 5 == 0) global.acid_speed++
+	if(CURRENT_STAGE % 5 == 0) {
+		global.acid_speed++
+		
+		if(!instance_exists(obj_chatbox_ingame)){
+			var cb = instance_create_layer(0,0, "UI", obj_chatbox_ingame)
+			cb.MESSAGES = global.level_list[global.ACTIVE_LEVEL].chatdata.ingame.progress[irandom(array_length(global.level_list[global.ACTIVE_LEVEL].chatdata.ingame.progress)-1)]
+		}
+	}
 	
 	LoadStage(TILEMAP, DECORMAP, irandom(array_length(global.level_list[global.ACTIVE_LEVEL].leveldata.stages)-1))
 	
@@ -68,5 +75,9 @@ Restart = function(){
 	room_restart()
 	obj_view.TARGET = obj_player
 }
+
+var cb = instance_create_layer(0,0, "UI", obj_chatbox_ingame)
+cb.MESSAGES = global.level_list[global.ACTIVE_LEVEL].chatdata.ingame.start[irandom(array_length(global.level_list[global.ACTIVE_LEVEL].chatdata.ingame.start)-1)]
+
 
 NextStage()
