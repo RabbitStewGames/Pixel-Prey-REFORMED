@@ -1,24 +1,24 @@
-if(keyboard_check_pressed(vk_escape)) {
+if(keyboard_check_pressed(vk_escape) or (keyboard_check_pressed(ord("X")) and !highlighted) or (gamepad_button_check_pressed(0, gp_face2) and !highlighted) or gamepad_button_check_pressed(0, gp_start)) {
 	delete_timer = 1
 }
 
 if(!highlighted)
 {
-	if(keyboard_check_pressed(vk_up)){
+	if(global.up_pressed){
 		if(selected > Option.Top + 1){
 			selected--
 			audio_play_sound_on(obj_gamemanager.EMITTER_SFX, sfx_cursor, false, 0)
 		}
 		if(room == rm_title and selected == Option.QuitToTitle) selected--
 	}
-	if(keyboard_check_pressed(vk_down)){
+	if(global.duck_pressed){
 		if(selected < Option.QuitGame){
 			selected++
 			audio_play_sound_on(obj_gamemanager.EMITTER_SFX, sfx_cursor, false, 0)
 		}
 		if(room == rm_title and selected == Option.QuitToTitle) selected++
 	}
-	if(keyboard_check_pressed(ord("Z"))){
+	if(global.jump){
 		if(selected == Option.Back) delete_timer = 1
 		else if(selected == Option.QuitToTitle) room_goto(rm_title)
 		else if(selected == Option.QuitGame) game_end()
@@ -26,19 +26,19 @@ if(!highlighted)
 		
 		audio_play_sound_on(obj_gamemanager.EMITTER_SFX, sfx_select, false, 0)
 	}
-	if(keyboard_check_pressed(ord("X"))){
+	if(global.dash){
 		delete_timer = 1
 		audio_play_sound_on(obj_gamemanager.EMITTER_SFX, sfx_select, false, 0)
 	}
 }
 else
 {
-	if(keyboard_check_pressed(ord("X"))){
+	if(global.dash){
 		highlighted = false	
 		audio_play_sound_on(obj_gamemanager.EMITTER_SFX, sfx_select, false, 0)
 	}
 	
-	if(keyboard_check_pressed(vk_left))
+	if(global.left_pressed)
 	{
 		audio_play_sound_on(obj_gamemanager.EMITTER_SFX, sfx_cursor, false, 0)
 		switch (selected)
@@ -64,7 +64,7 @@ else
 		}
 	}
 	
-	if(keyboard_check_pressed(vk_right))
+	if(global.right_pressed)
 	{
 		audio_play_sound_on(obj_gamemanager.EMITTER_SFX, sfx_cursor, false, 0)
 		switch (selected)

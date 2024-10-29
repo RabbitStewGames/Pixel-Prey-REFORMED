@@ -18,6 +18,12 @@ if(failMessage == "")
 			failMessage = global.level_list[global.ACTIVE_LEVEL].chatdata.fails.chaser[irandom(array_length(global.level_list[global.ACTIVE_LEVEL].chatdata.fails.chaser)-1)]
 			
 			break
+			
+			case DamageSource.Patroller:
+			
+			failMessage = global.level_list[global.ACTIVE_LEVEL].chatdata.fails.patroller[irandom(array_length(global.level_list[global.ACTIVE_LEVEL].chatdata.fails.patroller)-1)]
+			
+			break
 		}
 	}
 }
@@ -195,6 +201,6 @@ sfxpitch = min(sfxpitch, 1.75)
 
 if(scoreCountFinished)
 {
-	if(keyboard_check_pressed(vk_space)) obj_levelmanager.Restart()
-	if(keyboard_check(vk_escape)) room_goto(rm_title)
+	if(global.jump) obj_levelmanager.Restart()
+	if(keyboard_check(vk_escape) or gamepad_button_check_pressed(0, gp_face2)) room_goto(rm_title)
 }

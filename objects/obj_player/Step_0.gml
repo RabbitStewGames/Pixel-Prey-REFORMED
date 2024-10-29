@@ -114,7 +114,7 @@ else
 			LOCK_ANIMATION = true
 		}
 	
-		if(keyboard_check_pressed(global.options.keymap.duck) and !GROUNDPOUNDING and !SUBMERGED)
+		if(global.duck_pressed and !GROUNDPOUNDING and !SUBMERGED)
 		{
 			audio_play_sound_on(obj_gamemanager.EMITTER_SFX, SFX_DASH, 0, false)
 			GROUNDPOUNDING = true
@@ -389,7 +389,7 @@ if(GROUNDED and !GROUNDED_OLD) {
 	audio_play_sound_on(obj_gamemanager.EMITTER_SFX, SFX_LAND, false, 0, 1, 0, random_range(.8,1.2))
 }
 
-if(keyboard_check_pressed(global.options.keymap.up) and GROUNDED)
+if(global.up_pressed and GROUNDED)
 {
 	if(place_meeting(x,y,obj_goal))
 	{

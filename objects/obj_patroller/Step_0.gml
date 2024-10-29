@@ -2,6 +2,26 @@ if(active_animation == attributes.anim.capture)
 	image_speed = .5
 else
 	image_speed = 1
+	
+image_xscale = Direction * 2
+	
+// Movement
+
+
+if(place_meeting(x + Direction, y, obj_levelmanager.TILEMAP) or tilemap_get_at_pixel(obj_levelmanager.TILEMAP, x + Direction, y + 1) == 0 /*or !place_meeting(x + vel.x / 60, y + sprite_height + 1, obj_levelmanager.TILEMAP)*/) Direction = -Direction
+
+
+if(place_meeting(x,y,obj_levelmanager.TILEMAP)) y--
+
+if(!dead_af and stun <= 0){
+	if(Direction == 1) vel.x = attributes.move_speed
+	if(Direction == -1) vel.x = -attributes.move_speed
+}
+
+//vel.y = 300
+
+// Animation
+	
 
 if(active_animation != attributes.anim.capture and image_index > active_animation[array_length(active_animation)-1] or image_index < active_animation[0])
 	image_index = active_animation[0]
@@ -11,18 +31,22 @@ if(active_animation == attributes.anim.capture){
 	else if(image_index >= active_animation[array_length(active_animation)-1]) active_animation = attributes.anim.hold
 }
 
+if(vel.x != 0 and !dead_af and !ate_player)
+	active_animation = attributes.anim.move
+
 if(obj_player.STATE == PlayerState.Dead and !dead_af){
 	active_animation = attributes.anim.idle
-	aggro = false
 	ate_player = false
 	return;
 }
 
 if(dead_af){
 	active_animation = attributes.anim.death
-	aggro = false
 	death_timer--
 	if(death_timer % 2 == 0) image_alpha = 0 else image_alpha = 1
+	
+	vel.x = 0
+	vel.y = 0
 	
 	if(death_timer <= 0) instance_destroy()
 }
@@ -44,7 +68,7 @@ if(place_meeting(x,y,obj_player) and !ate_player and obj_player.STATE == PlayerS
 		dead_af = true
 		global.scoreboard.kills++
 		death_timer = 60
-		audio_play_sound_on(obj_gamemanager.EMITTER_SFX, attributes.sfx_death, false, 0)	
+		//audio_play_sound_on(obj_gamemanager.EMITTER_SFX, attributes.sfx_death, false, 0)	
 	}
 	else if(obj_player.IMMUNITY <= 0)
 	{
@@ -54,26 +78,6 @@ if(place_meeting(x,y,obj_player) and !ate_player and obj_player.STATE == PlayerS
 		obj_player.STATE = PlayerState.Hidden
 		active_animation = attributes.anim.capture
 	}
-}
-
-if(!aggro)
-{
-	vel.x = 0
-	vel.y = 0
-	
-	if(distance_to_object(obj_player) < 100 and obj_player.STATE == PlayerState.Default and !dead_af and stun == 0)
-	{
-		aggro = true
-		audio_play_sound_on(obj_gamemanager.EMITTER_SFX, attributes.sfx_aggro, false, 0)	
-	}
-}
-
-if(aggro){
-	var dir = Vector2.DirectionTo(new Vector2(x,y), new Vector2(obj_player.x, obj_player.y - obj_player.sprite_height))
-	
-	vel = Vector2.Lerp(vel, Vector2.MultiplyReal(dir, attributes.move_speed), .001)
-	
-	if(obj_player.STATE != PlayerState.Default) aggro = false
 }
 
 if(ate_player)
@@ -101,9 +105,9 @@ if(ate_player and active_animation == attributes.anim.hold)
 	{
 		churn_timer = 60
 		Churn()
-		obj_player.DamageMe(DamageSource.Chaser, 1, true)	
+		obj_player.DamageMe(DamageSource.Patroller, 1, true)	
 		if(obj_player.STATE == PlayerState.Dead){
-			audio_play_sound_on(obj_gamemanager.EMITTER_SFX, attributes.sfx_digest, false, 0)	
+			//audio_play_sound_on(obj_gamemanager.EMITTER_SFX, attributes.sfx_digest, false, 0)	
 		}
 	}
 }else churn_timer = 60
@@ -111,7 +115,6 @@ if(ate_player and active_animation == attributes.anim.hold)
 if(vel.x > 0) image_xscale = -2
 else if(vel.x < 0) image_xscale = 2
 
-x += vel.x / 60
-y += vel.y / 60
+move_and_collide(vel.x / 60, vel.y / 60, obj_levelmanager.TILEMAP)
 
 prompt_frame += 10/60

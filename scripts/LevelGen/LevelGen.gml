@@ -66,6 +66,10 @@ function LoadStage(tilemap, decormap, index)
 			if(col == c_blue){
 				instance_create_layer(_x * CELL_WIDTH, _y * CELL_HEIGHT, "Instances", obj_chaser)
 			}
+			
+			if(col == c_aqua){
+				instance_create_layer(_x * CELL_WIDTH, _y * CELL_HEIGHT + CELL_HEIGHT, "Instances", obj_patroller)
+			}
 		}
 	}
 	

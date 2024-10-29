@@ -32,12 +32,12 @@
         {"name":"g_ChromaSpreadAmount","type":0,"value":"0",},
         {"name":"g_CamOffsetScale","type":0,"value":"1",},
         {"name":"g_DistortTexture","type":2,"value":"_filter_heathaze_noise_sprite",},
-      ],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":64,"SerialiseWidth":32,"TileCompressedData":[
-          -365,-2147483648,-3,9,-28,-2147483648,1,13,-3,-2147483648,2,11,9,-25,-2147483648,1,13,-6,-2147483648,
-          1,3,-23,-2147483648,1,13,-7,-2147483648,1,3,-22,-2147483648,1,5,-8,-2147483648,1,3,-22,-2147483648,1,
-          5,-8,-2147483648,1,3,-22,-2147483648,1,5,-8,-2147483648,1,3,-23,-2147483648,1,6,-6,-2147483648,1,4,-25,
-          -2147483648,-6,2,-417,-2147483648,1,0,-28,-2147483648,-6,0,-25,-2147483648,-8,0,-22,-2147483648,-6,0,
-          1,-2147483648,-3,0,-22,-2147483648,-8,0,-23,-2147483648,-5,0,-27,-2147483648,-4,0,-817,-2147483648,
+      ],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":128,"SerialiseWidth":128,"TileCompressedData":[
+          -1421,-2147483648,-3,9,-124,-2147483648,1,13,-3,-2147483648,2,11,9,-121,-2147483648,1,13,-6,-2147483648,
+          1,3,-119,-2147483648,1,13,-7,-2147483648,1,3,-118,-2147483648,1,5,-8,-2147483648,1,3,-118,-2147483648,
+          1,5,-8,-2147483648,1,3,-118,-2147483648,1,5,-8,-2147483648,1,3,-119,-2147483648,1,6,-6,-2147483648,1,
+          4,-121,-2147483648,-6,2,-1665,-2147483648,1,0,-124,-2147483648,-6,0,-121,-2147483648,-8,0,-118,-2147483648,
+          -6,0,1,-2147483648,-3,0,-118,-2147483648,-8,0,-119,-2147483648,-5,0,-123,-2147483648,-4,0,-11505,-2147483648,
         ],"TileDataFormat":1,},"tilesetId":{"name":"tile_orange_decor","path":"tilesets/tile_orange_decor/tile_orange_decor.yy",},"userdefinedDepth":false,"visible":true,"x":0,"y":0,},
     {"$GMRTileLayer":"","%Name":"Tiles_1","depth":200,"effectEnabled":true,"effectType":"_filter_heathaze","gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Tiles_1","properties":[
         {"name":"g_Distort1Speed","type":0,"value":"0.01",},
@@ -51,9 +51,22 @@
         {"name":"g_ChromaSpreadAmount","type":0,"value":"0",},
         {"name":"g_CamOffsetScale","type":0,"value":"1",},
         {"name":"g_DistortTexture","type":2,"value":"_filter_heathaze_noise_sprite",},
-      ],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":64,"SerialiseWidth":32,"TileCompressedData":[
-          -397,0,3,13,15,11,-28,0,6,13,17,16,18,15,11,-25,0,2,13,17,-4,16,1,12,-24,0,2,13,17,-5,16,1,12,-24,0,
-          1,14,-6,16,1,12,-24,0,2,6,19,-4,16,2,20,4,-25,0,1,6,-4,8,1,4,-1455,0,
+      ],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":128,"SerialiseWidth":128,"TileCompressedData":[
+          -32,0,-96,-2147483648,-32,0,-96,-2147483648,-32,0,-96,-2147483648,-32,0,-96,-2147483648,-32,0,-96,-2147483648,
+          -32,0,-96,-2147483648,-32,0,-96,-2147483648,-32,0,-96,-2147483648,-32,0,-96,-2147483648,-32,0,-96,-2147483648,
+          -32,0,-96,-2147483648,-32,0,-96,-2147483648,-13,0,3,13,15,11,-16,0,-96,-2147483648,-12,0,6,13,17,16,
+          18,15,11,-14,0,-96,-2147483648,-11,0,2,13,17,-4,16,1,12,-14,0,-96,-2147483648,-10,0,2,13,17,-5,16,1,
+          12,-14,0,-96,-2147483648,-10,0,1,14,-6,16,1,12,-14,0,-96,-2147483648,-10,0,2,6,19,-4,16,2,20,4,-14,0,
+          -96,-2147483648,-11,0,1,6,-4,8,1,4,-15,0,-96,-2147483648,-32,0,-96,-2147483648,-32,0,-96,-2147483648,
+          -32,0,-96,-2147483648,-32,0,-96,-2147483648,-32,0,-96,-2147483648,-32,0,-96,-2147483648,-32,0,-96,-2147483648,
+          -32,0,-96,-2147483648,-32,0,-96,-2147483648,-32,0,-96,-2147483648,-32,0,-96,-2147483648,-32,0,-96,-2147483648,
+          -32,0,-96,-2147483648,-32,0,-96,-2147483648,-32,0,-96,-2147483648,-32,0,-96,-2147483648,-32,0,-96,-2147483648,
+          -32,0,-96,-2147483648,-32,0,-96,-2147483648,-32,0,-96,-2147483648,-32,0,-96,-2147483648,-32,0,-96,-2147483648,
+          -32,0,-96,-2147483648,-32,0,-96,-2147483648,-32,0,-96,-2147483648,-32,0,-96,-2147483648,-32,0,-96,-2147483648,
+          -32,0,-96,-2147483648,-32,0,-96,-2147483648,-32,0,-96,-2147483648,-32,0,-96,-2147483648,-32,0,-96,-2147483648,
+          -32,0,-96,-2147483648,-32,0,-96,-2147483648,-32,0,-96,-2147483648,-32,0,-96,-2147483648,-32,0,-96,-2147483648,
+          -32,0,-96,-2147483648,-32,0,-96,-2147483648,-32,0,-96,-2147483648,-32,0,-96,-2147483648,-32,0,-96,-2147483648,
+          -32,0,-96,-2147483648,-32,0,-96,-2147483648,-32,0,-8288,-2147483648,
         ],"TileDataFormat":1,},"tilesetId":{"name":"tile_orange","path":"tilesets/tile_orange/tile_orange.yy",},"userdefinedDepth":false,"visible":true,"x":0,"y":0,},
     {"$GMRInstanceLayer":"","%Name":"Instances","depth":300,"effectEnabled":true,"effectType":"_filter_heathaze","gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"$GMRInstance":"v1","%Name":"inst_BF4F4F3","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_BF4F4F3","objectId":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":2.0,"scaleY":2.0,"x":64.0,"y":1824.0,},
@@ -100,10 +113,10 @@
   "resourceType":"GMRoom",
   "resourceVersion":"2.0",
   "roomSettings":{
-    "Height":2048,
+    "Height":4096,
     "inheritRoomSettings":false,
     "persistent":false,
-    "Width":1024,
+    "Width":4096,
   },
   "sequenceId":null,
   "views":[

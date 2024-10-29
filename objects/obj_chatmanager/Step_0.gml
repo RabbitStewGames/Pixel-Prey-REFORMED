@@ -20,7 +20,7 @@ else
 
 	if(CURRENT_CHAR < CHARS)
 	{
-		if(mouse_check_button_pressed(mb_left) or keyboard_check_pressed(vk_space) or keyboard_check_pressed(vk_enter))
+		if(ACTION)
 		{
 			for(var i = CURRENT_CHAR + 1; i <= CHARS; i++)
 			{

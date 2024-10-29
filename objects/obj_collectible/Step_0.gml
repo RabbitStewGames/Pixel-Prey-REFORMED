@@ -21,7 +21,7 @@ if(COLLECTED){
 if(X_SCREEN < 48 * global.GameScale + 16 and Y_SCREEN < 8 * global.GameScale + 16 and COLLECTED){
 	array_push(global.scoreboard.collectibles,COLLECTIBLE)	
 	
-	if(random(1) > .9) global.playerhp = min(global.playerhp+1,global.playerhp_max)
+	if(array_length(global.scoreboard.collectibles) % 10 == 0) global.playerhp = min(global.playerhp+1,global.playerhp_max)
 	
 	obj_ui_maingame.collectible_sprite = sprite_index
 	obj_ui_maingame.collectible_frame = 0

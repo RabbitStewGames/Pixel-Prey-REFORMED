@@ -48,7 +48,7 @@ if(STAGE == 1 and FADE_TIMER > 100 and FADE_TIMER < 110) {
 else
 colorblend = c_white
 
-if(keyboard_check(vk_space) or keyboard_check(vk_escape) or keyboard_check(vk_enter) or mouse_check_button(mb_left))
+if(global.jump or keyboard_check(vk_escape) or keyboard_check(vk_enter) or mouse_check_button(mb_left))
 	room_goto(rm_title)
 	
 if(STAGE == 0 and CINNA_ANIMATE == true and ALPHA == 1){

@@ -128,6 +128,7 @@ enum DamageSource
 	Generic,
 	Acid,
 	Chaser,
+	Patroller,
 }
 
 deathSource = DamageSource.Generic

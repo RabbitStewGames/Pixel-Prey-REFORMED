@@ -1,0 +1,100 @@
+==========================
+PIXEL PREY R DOCUMENTATION
+001 - MAKING        LEVELS
+==========================
+
+(wip)
+
+== SECTION 001a: STAGES ==
+
+In Pixel Prey Reformed, you're able to customize existing levels however you want. One of the ways to customize a level is by creating your own stages for the player to jump through.
+
+You can find a level's stages by going to 'resources/levels/levelname/progen' (progen being short for procedural generation). Each stage is stored as a .png image, with different pixel colors meaning different things (see key.png in 'resources'). Each pixel is a tile/object that goes in your level!
+
+IMPORTANT NOTES:
+
+- Max stage size is 128x128
+- Each stage requires a player start and goal (Green and red respectively)
+- Non-PNG files (i.e. jpegs) will be ignored by the level loader
+
+
+
+== SECTION 001b: LEVEL ATTRIBUTES ==
+
+You can edit more than just stage layouts. You can also change the building blocks of the level itself!
+
+You can find a level's attributes in 'resources/levels/levelname/attributes.json'. This file controls things like the name the level shows in the level select (0.1.3, currently not implemented), the pred's name, the acid speed, and more. Here's the full rundown:
+
+"levelname"    : String (The name of the level in the Level Select)
+"predname"     : String (The name of the pred shown under the levelname)
+"acid_speed"   : Number (The speed in pixels/second the acid rises)
+"collectibles" : Array (see 001c)
+"gameovers"    : Array (see 001d)
+"images"       : Struct
+- "ambient_light"  : Color (The color of ambient light in the level (example: [255, 255, 255] is white, [0,0,0] is black))
+- "acid_color"     : Color (The color of acid in the level)
+- "acid_alpha"     : Number (From 0.0 to 1.0, how opaque the acid is)
+- "acid_frames"    : Number (The amount of frames to slice in the acid sprite sheet)
+
+IMPORTANT NOTES:
+
+- There should not be any line-breaks in the attributes.json file. GameMaker is stupid and won't read it.
+
+
+
+== SECTION 001c: COLLECTIBLES ==
+
+The player is able to collect various goodies to add to their score at the end of their run and to restore their hitpoints. In attributes.json, every collectible is defined in a struct inside the "collectibles" array:
+
+"value"  : Number (The amount of points the collectible gives the player)
+"image"  : String (The filename of the collectible's sprite. Collectible sprites belong in the level's "images" folder.)
+"frames" : Number (The amount of frames to slice in the collectible's sprite sheet)
+
+
+
+== SECTION 001d: GAMEOVERS ==
+
+When the player inevitably fails a level, the game will pick a random animation to play before displaying their final score. Each gameover is defined in a struct, much like with the "collectibles" array.
+
+"image"  : String (The filename of the gameover's sprite. Like with collectibles, it must be in the "images" folder.)
+"frames" : Number (The amount of frames to slice in the gameover's sprite sheet)
+
+GUIDELINES:
+
+- Gameovers must be 332x117 pixels. In the future, gameovers will be scaled regardless of size. (Written in v0.1.3)
+
+
+
+== SECTION 001e: AUDIO ==
+
+The vast majority of sounds that will play in your custom level will be placed in the level's "audio" folder. There are a few essential audio clips that must be in a level:
+
+"ambience.ogg"      : The belly noises that play on the game's ambience track. Loops.
+"music.ogg"         : The music track for a level. If you don't want music, replace this file with a silent .ogg file. Loops.
+"music_muffled.ogg" : Ditto, but the version of the music that plays when you're captured by an enemy. Doesn't necessarily have to be a muffled version of the music.
+"talk.ogg"          : The text scroll sfx for the pred. See 001f for more details.
+"collectible.ogg"   : The sound that plays when you get a collectible.
+
+
+
+== SECTION 001f: CHAT.JSON ==
+
+This file may seem messy and packed (because it is), but that's because it holds everything related to dialogue in your level. We'll go in order:
+
+
+EXPRESSIONS: 
+
+A struct containing every "talking head" used in the side of the messagebox. You can make an expression like this:
+	"expression_name": {"image":"image_name.png", "frames":2}
+
+"image" : String (Filename in "images" folder)
+"frames : Number (Amount of frames in sheet)
+
+Be sure to separate expressions with a comma!
+
+
+SCRIPT:
+
+An array containing the "script" for the level's intro scene. 
+
+(wip)

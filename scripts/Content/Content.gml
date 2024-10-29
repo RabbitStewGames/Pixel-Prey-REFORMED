@@ -212,6 +212,35 @@ function LevelData(_data, _folder) constructor
 				_chaser = c
 			}
 			
+			var _patroller = -1
+			
+			if(directory_exists($"{global.ResourcePath}/levels/{levelfolder}/obstacle/patroller")){
+				
+				var file = file_text_open_read($"{global.ResourcePath}/levels/{levelfolder}/obstacle/patroller/attributes.json")
+				var contents = file_text_read_string(file)
+				var d = json_parse(contents)
+				
+				var p = {
+					image: LoadImage($"{global.ResourcePath}/levels/{levelfolder}/obstacle/patroller/main_sprite.png",d.framecount),
+					mask: LoadImage($"{global.ResourcePath}/levels/{levelfolder}/obstacle/patroller/mask.png"),
+					framerate: d.framerate,
+					framecount: d.framecount,
+					move_speed: d.move_speed,
+					anim:{
+						idle: d.anim.idle,
+						move: d.anim.move,
+						capture: d.anim.capture,
+						hold: d.anim.hold,
+						death: d.anim.death
+					},
+					sfx_capture: LoadSound($"{global.ResourcePath}/levels/{levelfolder}/obstacle/patroller/capture.ogg"),
+				}
+				
+				file_text_close(file)
+				
+				_patroller = p
+			}
+			
 			
 			
 			var output = {
@@ -225,7 +254,6 @@ function LevelData(_data, _folder) constructor
 				s_acid: _s_acid,
 				s_goal: LoadImage($"{global.ResourcePath}/levels/{levelfolder}/images/goal.png"),
 				acid_speed: data.leveldata.acid_speed,
-				animation_delay: data.images.animation_delay,
 				acid_color: data.images.acid_color,
 				acid_alpha: data.images.acid_alpha,
 				ambient_light: data.images.ambient_light,
@@ -235,6 +263,7 @@ function LevelData(_data, _folder) constructor
 				stages: _stages,
 				collectibles: _collectibles,
 				chaser:_chaser,
+				patroller:_patroller,
 			}
 			return output
 		}

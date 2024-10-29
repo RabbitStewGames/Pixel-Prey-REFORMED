@@ -1,0 +1,33 @@
+==========================
+PIXEL PREY R DOCUMENTATION
+002 - MAKING       PLAYERS
+==========================
+
+(wip)
+
+== SECTION 002a: OVERVIEW ==
+
+Making a custom player is a fairly simple process, especially compared to making a level. You can find player data in "resources/players". All you need to do is replace files and tweak attributes.json if you need to. Filenames make the process self-explanatory.
+
+
+main_sprite.png  : The sprite sheet for the player. Make sure it's horizontal.
+mask.png         : The collision mask or hitbox of the player. Make sure it's symmetrical, because you could end up clipping through walls if it's not.
+Audio files      : The sounds for various movements and actions, all self-explanatory. Make sure the files are .ogg, however!
+Footsteps folder : Drop all footstep noises here. Filenames don't matter, just make sure they're .ogg.
+
+
+
+== SECTION 002b: ATTRIBUTES ==
+
+If you want to tweak gameplay-related things or animations, you'll have to edit the attributes.json file.
+
+
+"name"         : String (The name of the player in the player select)
+"jump_delay"   : Number (The delay in ANIMATION FRAMES before the player leaves the ground. Set to 0 if you want no delay)
+"anim_frames"  : Number (The total amount of frame slices in the sprite sheet)
+"bonk_delay"   : Number (The amount of ANIMATION FRAMES it takes before the player unsticks from the ceiling after bonking it)
+"anim" Arrays  : Array (Lists containing the frames for each animation. Keep in mind the frames start at 0, so the first frame would be 0, second would be 1, and so on.)
+"move_speed"   : Number (The speed in which the player runs. Fine-tune to your liking.)
+"jump_height"  : Number (The force applied to the player when you jump.)
+"friction"     : Number (From 0.0 to 1.0, controls your speed damping. 1.0 makes you start/stop moving instantly while lower numbers give you a smoother, more slippery effect)
+"hp"           : Number (The amount of hits it takes for you to die)

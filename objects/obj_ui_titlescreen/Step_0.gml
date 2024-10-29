@@ -3,12 +3,12 @@ if(state == 0){
 	subtitle_y_offset = sin((current_time - 500) * pi * sin_period) * sin_amplitude
 	title_rot = sin(current_time * pi * sin_period/2) * 5
 	
-	if(keyboard_check_pressed(vk_space) and accepting_input and !instance_exists(obj_ui_options)){
+	if(global.jump and accepting_input and !instance_exists(obj_ui_options)){
 		transition_timer_exit = 60
 		accepting_input = false
 	}
 	
-	if(accepting_input and keyboard_check_pressed(vk_escape) and !instance_exists(obj_ui_options))
+	if(accepting_input and (keyboard_check_pressed(vk_escape) or gamepad_button_check_pressed(0, gp_face2)) and !instance_exists(obj_ui_options))
 	{
 		instance_create_depth(0,0,-9999, obj_ui_options)	
 	}
