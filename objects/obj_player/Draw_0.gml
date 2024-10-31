@@ -1,3 +1,8 @@
+draw_set_color(c_white)
+draw_set_alpha(1)
+
+if(TAUNTING) draw_sprite_ext(TAUNT_BG, 0, x, y, image_xscale, image_yscale, image_angle, c_white, 1)
+
 if(STATE == PlayerState.Hidden or STATE == PlayerState.Dead) return
 
 if(IMMUNITY <= 0 and JUMPBOOST_TIMER > 0)

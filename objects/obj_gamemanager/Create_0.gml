@@ -14,6 +14,8 @@ global.right = false
 global.up = false
 global.duck = false
 global.jump = false
+global.jump_released = false
+global.jump_held = false
 global.dash = false
 
 global.left_pressed = false
@@ -22,3 +24,13 @@ global.up_pressed = false
 global.duck_pressed = false
 global.lhBlock = false
 global.lvBlock = false
+
+global.taunt = false
+
+enum ControlScheme {
+	Keyboard,
+	Xbox,
+	Playstation
+}
+
+global.controlscheme = ControlScheme.Keyboard

@@ -16,6 +16,7 @@ IMPORTANT NOTES:
 - Max stage size is 128x128
 - Each stage requires a player start and goal (Green and red respectively)
 - Non-PNG files (i.e. jpegs) will be ignored by the level loader
+- The player CANNOT fit through 1x1 gaps! Must be 2x2 at least!
 
 
 
@@ -82,7 +83,7 @@ The vast majority of sounds that will play in your custom level will be placed i
 This file may seem messy and packed (because it is), but that's because it holds everything related to dialogue in your level. We'll go in order:
 
 
-EXPRESSIONS: 
+001f-A : EXPRESSIONS: 
 
 A struct containing every "talking head" used in the side of the messagebox. You can make an expression like this:
 	"expression_name": {"image":"image_name.png", "frames":2}
@@ -93,8 +94,58 @@ A struct containing every "talking head" used in the side of the messagebox. You
 Be sure to separate expressions with a comma!
 
 
-SCRIPT:
+001f-B : SCRIPT:
 
-An array containing the "script" for the level's intro scene. 
+An array containing the "script" for the level's intro scene. Each message is a struct. Each struct must contain:
 
-(wip)
+"speaker"       : String (Who's saying what? Can be left as "" for narration.)
+"expression"    : String (The expression from the "expressions" list for the given message. 
+                  This should be the key/name of the expression as you typed it in the list. 
+                  Can be left as "none" for narration.)
+"message"       : String (The text to display in the message. Can be left as "" if it's an event message.)
+"event"         : String (Something special the message will do. See "EVENTS" below.)
+"args"          : Array (Some extra information for the "event". See "EVENTS" below.)
+"talksound"     : String (Who's talking? Set to "you" to play the current player's talksound in their folder, 
+                  "pred" for the pred's talksound in their audio folder, and "none" for none.)
+
+001f-C : EVENTS:
+
+In the intro cutscene, you're able to insert events into messages to make them do special things, like show images and play sounds. Here's each event and the arguments (args) they require:
+
+"image"        : Shows an image on-screen. 
+Required args  : String (The image filename to show. Should be in the level's "images" folder. GIFs are supported as well.)
+
+"delay"        : Delays the next message.
+Required args  : Number (The amount of frames to wait.)
+
+"sound"        : Plays a sound.
+Required args  : String (The sound filename to play. Should be in the level's "audio" folder. Must be a .ogg!)
+
+
+001f-D : IN-GAME MESSAGES:
+
+The "ingame" struct contains various dialogue bits that play while the level is running. There are 4 conditions: "start", "progress", "damage", and "fail". You can use these conditional dialogue bits to add a bit of extra flair to your level. In-game messages are also simpler than intro messages, as they do not include events.
+
+FORMATTING NOTE: Each condition is an array of arrays of structs. Be sure to follow this format: "condition":[[{message}],[{message}],[{message}]]
+
+In-game messages are handled identically to intro messages, just without events and args.
+
+
+001f-E : FAIL MESSAGES:
+
+The "fails" struct contains strings that are displayed in the game over screen. These strings change depending on what killed you.
+
+CONDITIONS:
+"acid"       : You fell in the acid.
+"chaser"     : You were eaten by the flying chaser enemy. (i.e the ghost in "Trick or Treat")
+"patroller"  : You were eaten by the patroller enemy. (i.e the gummy snake in "Trick or Treat")
+
+Each condition is a simple array of strings. Example:
+
+"fails": {
+  "acid": [
+    "It's giving meltcore?",
+    "funny vore joke",
+    "rawr"
+  ]
+}

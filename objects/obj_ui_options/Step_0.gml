@@ -26,14 +26,14 @@ if(!highlighted)
 		
 		audio_play_sound_on(obj_gamemanager.EMITTER_SFX, sfx_select, false, 0)
 	}
-	if(global.dash){
+	if(keyboard_check_pressed(ord("X")) or keyboard_check_pressed(vk_shift) or gamepad_button_check_pressed(0, gp_face2)){
 		delete_timer = 1
 		audio_play_sound_on(obj_gamemanager.EMITTER_SFX, sfx_select, false, 0)
 	}
 }
 else
 {
-	if(global.dash){
+	if(keyboard_check_pressed(ord("X")) or keyboard_check_pressed(vk_shift) or gamepad_button_check_pressed(0, gp_face2)){
 		highlighted = false	
 		audio_play_sound_on(obj_gamemanager.EMITTER_SFX, sfx_select, false, 0)
 	}

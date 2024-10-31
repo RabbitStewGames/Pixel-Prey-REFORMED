@@ -139,8 +139,9 @@ function LevelData(_data, _folder) constructor
 			{
 				if(string_ends_with(img_name, ".png"))
 				{
+					//show_debug_message(img_name)
 					var img = LoadImage($"{global.ResourcePath}/levels/{levelfolder}/progen/{img_name}")
-				
+					//show_debug_message(img)
 					array_push(_stages, img);
 				}
 			    img_name = file_find_next();
@@ -148,6 +149,7 @@ function LevelData(_data, _folder) constructor
 
 			file_find_close();
 			
+			// show_debug_message(_stages)
 			
 			
 			var __collectibles = data.leveldata.collectibles
@@ -233,6 +235,7 @@ function LevelData(_data, _folder) constructor
 						hold: d.anim.hold,
 						death: d.anim.death
 					},
+					sfx_death: LoadSound($"{global.ResourcePath}/levels/{levelfolder}/obstacle/patroller/death.ogg"),
 					sfx_capture: LoadSound($"{global.ResourcePath}/levels/{levelfolder}/obstacle/patroller/capture.ogg"),
 				}
 				
@@ -265,6 +268,8 @@ function LevelData(_data, _folder) constructor
 				chaser:_chaser,
 				patroller:_patroller,
 			}
+			
+			// show_debug_message(output.stages)
 			return output
 		}
 		catch(_exception)
@@ -304,6 +309,8 @@ function PlayerData(_data, _folder) constructor{
 		var imgCount = data.anim_frames
 		var strip = LoadImage($"{global.ResourcePath}/players/{folder}/main_sprite.png",imgCount)
 		sprite_set_offset(strip, sprite_get_width(strip) / 2, sprite_get_height(strip))
+		var _taunt_bg = LoadImage($"{global.ResourcePath}/players/{folder}/taunt_bg.png")
+		sprite_set_offset(_taunt_bg, sprite_get_width(_taunt_bg) / 2, sprite_get_height(_taunt_bg))
 		var _mask = LoadImage($"{global.ResourcePath}/players/{folder}/mask.png")
 		sprite_set_offset(_mask, sprite_get_width(_mask) / 2, sprite_get_height(_mask))
 		
@@ -343,6 +350,7 @@ function PlayerData(_data, _folder) constructor{
 			sfx_bonk: LoadSound($"{global.ResourcePath}/players/{folder}/bonk.ogg"),
 			sfx_slide: LoadSound($"{global.ResourcePath}/players/{folder}/slide.ogg"),
 			sfx_land: LoadSound($"{global.ResourcePath}/players/{folder}/land.ogg"),
+			sfx_taunt: LoadSound($"{global.ResourcePath}/players/{folder}/taunt.ogg"),
 			sfx_footsteps: _steps,
 			anim_idle: data.anim_idle,
 			anim_run: data.anim_run,
@@ -361,8 +369,10 @@ function PlayerData(_data, _folder) constructor{
 			anim_swim_up: data.anim_swim_up,
 			anim_swim_down: data.anim_swim_down,
 			anim_stun: data.anim_stun,
+			anim_taunt: data.anim_taunt,
 			jump_delay: data.jump_delay,
 			bonk_delay: data.bonk_delay,
+			taunt_bg: _taunt_bg
 		}
 		
 		return output

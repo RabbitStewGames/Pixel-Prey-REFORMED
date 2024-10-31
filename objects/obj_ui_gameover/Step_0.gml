@@ -166,12 +166,8 @@ if(doingScoreCount and !scoreCountFinished)
 					scoreCountPhase++
 					sfxpitch = 1
 				}
-				else if(talliedCollectibles < 50)
-					actionTimer = 2
-				else if(talliedCollectibles < 100)
-					actionTimer = 1
 				else
-					actionTimer = 0
+					actionTimer = 2
 			}
 			else 
 			{

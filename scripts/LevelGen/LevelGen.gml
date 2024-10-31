@@ -18,7 +18,6 @@ function LoadStage(tilemap, decormap, index)
 	tilemap_clear(decormap, 0)
 	
 	var lvl = global.level_list[global.ACTIVE_LEVEL]
-	
 	var img = lvl.leveldata.stages[index]
 	
 	room_width = sprite_get_width(img) * CELL_WIDTH
@@ -58,16 +57,16 @@ function LoadStage(tilemap, decormap, index)
 			if(col == c_lime) {obj_player.x = _x * CELL_WIDTH; obj_player.y = _y * CELL_HEIGHT}
 			if(col == c_red) 
 			{
-				instance_create_layer(_x * CELL_WIDTH, (_y + 1) * CELL_HEIGHT, "Instances", obj_goal)
+				instance_create_layer(_x * CELL_WIDTH, (_y + 1) * CELL_HEIGHT, "Stage_Instances", obj_goal)
 			}
 			
-			if(col == c_yellow) instance_create_layer(_x * CELL_WIDTH, _y * CELL_HEIGHT, "Instances", obj_collectible)
+			if(col == c_yellow) instance_create_layer(_x * CELL_WIDTH, _y * CELL_HEIGHT, "Stage_Instances", obj_collectible)
 			
-			if(col == c_blue){
+			if(col == c_blue and global.level_list[global.ACTIVE_LEVEL].leveldata.chaser != -1){
 				instance_create_layer(_x * CELL_WIDTH, _y * CELL_HEIGHT, "Instances", obj_chaser)
 			}
 			
-			if(col == c_aqua){
+			if(col == c_aqua and global.level_list[global.ACTIVE_LEVEL].leveldata.patroller != -1){
 				instance_create_layer(_x * CELL_WIDTH, _y * CELL_HEIGHT + CELL_HEIGHT, "Instances", obj_patroller)
 			}
 		}

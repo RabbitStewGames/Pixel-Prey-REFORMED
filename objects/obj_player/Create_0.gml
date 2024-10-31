@@ -20,6 +20,8 @@ GROUNDED = true
 GROUNDED_OLD = GROUNDED
 GRAVITY = 10
 
+TAUNTING = false
+
 DIRECTION = 1
 
 JUMP_DELAY = DATA.playerdata.jump_delay * sprite_get_speed(sprite_index)
@@ -46,6 +48,8 @@ ANIM_CROUCH_END =  DATA.playerdata.anim_crouch_end
 ANIM_SWIM_UP =  DATA.playerdata.anim_swim_up
 ANIM_SWIM_DOWN =  DATA.playerdata.anim_swim_down
 ANIM_STUN =  DATA.playerdata.anim_stun
+ANIM_TAUNT = DATA.playerdata.anim_taunt
+TAUNT_BG = DATA.playerdata.taunt_bg
 
 LOCK_ANIMATION = false
 ACTIVE_ANIMATION = ANIM_IDLE
@@ -90,6 +94,12 @@ SFX_BONK = global.player_list[0].playerdata.sfx_bonk
 SFX_FOOTSTEPS = global.player_list[0].playerdata.sfx_footsteps
 SFX_SLIDE = global.player_list[0].playerdata.sfx_slide
 SFX_LAND = global.player_list[0].playerdata.sfx_land
+SFX_TAUNT = global.player_list[0].playerdata.sfx_taunt
+
+didGoalTaunt = false
+killTauntTimer = 0
+
+enemiesSlainThisDash = 0
 
 DeathTimer = 0
 

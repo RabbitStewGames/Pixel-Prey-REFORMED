@@ -12,7 +12,7 @@ scoreCountFinished = false
 actionTimer = 0
 scoreCountPhase = 0
 
-talliedScore = 0
+talliedScore = global.scoreboard.bonus
 talliedStages = 0
 talliedAvgTime = 0
 talliedKills = 0

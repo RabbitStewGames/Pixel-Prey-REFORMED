@@ -31,8 +31,8 @@ else{
 	tarX=max(tarX,0)
 	tarX = min(tarX, room_width - camera_get_view_width(obj_view.CAMERA))
 
-	var tarY = (TARGET.y - global.GameHeight / 2) 
-	tarY = clamp(tarY,0, room_height - global.GameHeight * global.GameScale / 2)
+	var tarY = (TARGET.y - global.GameHeight / 2 + Y_OFFSET) 
+	tarY = clamp(tarY,0, room_height - global.GameHeight)
 	var dstY = tarY - y
 	
 	var yPercent = dstY * 0.05

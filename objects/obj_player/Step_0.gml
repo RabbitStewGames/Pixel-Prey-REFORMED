@@ -33,107 +33,206 @@ GROUNDED = (!isfree(x,y + 1) or !isfree(x,y) or !isfree(x,y+2)) and VEL.y >= 0
 
 // MOVEMENT
 
-if(GROUNDED and !GROUNDED_OLD and COYOTE_TIME == 0) {
-	ACTIVE_ANIMATION = ANIM_LAND
-	LOCK_ANIMATION = true
-}
+if(!TAUNTING)
+{
+	if(GROUNDED and !GROUNDED_OLD and COYOTE_TIME == 0) {
+		ACTIVE_ANIMATION = ANIM_LAND
+		LOCK_ANIMATION = true
+	}
 
-if(GROUNDED)
-{
-	COYOTE_TIME = 10
-	GROUNDPOUNDING = false
-	if(DOWN){
-		if ((!LEFT and !RIGHT) or (LEFT and RIGHT)) // TODO replace with crawl anim
-		{
-			VEL.x = towards(VEL.x, 0, .8)
-		}
-		else if(RIGHT)
-		{
-			VEL.x = towards(VEL.x, MOVE_SPEED/4, .8)
-		}
-		else if(LEFT) 
-		{
-			VEL.x = towards(VEL.x, -MOVE_SPEED/4, .8)
-		}
-		
-		JUMPBOOST_TIMER--
-	}
-	else if(!UP) {
-		if ((!LEFT and !RIGHT) or (LEFT and RIGHT))
-		{
-			VEL.x = towards(VEL.x, 0, FRICTION)
-		}
-		else if(RIGHT)
-		{
-			if(abs(VEL.x) <=.1 and DIRECTION == 0) {
-				ACTIVE_ANIMATION = ANIM_SLOWTURN
-				LOCK_ANIMATION = true
-			}
-			VEL.x = towards(VEL.x, MOVE_SPEED, FRICTION)
-		}
-		else if(LEFT) 
-		{
-			if(abs(VEL.x) <=.1 and DIRECTION == 1) {
-				ACTIVE_ANIMATION = ANIM_SLOWTURN
-				LOCK_ANIMATION = true
-			}
-			VEL.x = towards(VEL.x, -MOVE_SPEED, FRICTION)
-		}
-	}
-	
-	if(UP) VEL.x = towards(VEL.x, 0, FRICTION)
-	
-	if(VEL.x > 0) DIRECTION = 1
-	else if(VEL.x < 0) DIRECTION = 0
-	
-	VEL.y = 0
-	
-	
-	if(!DOWN and !UP) obj_view.Y_OFFSET = 0
-}
-else
-{
-	if(!GROUNDPOUNDING)
+	if(GROUNDED)
 	{
-		obj_view.Y_OFFSET = 0
-	
-		VEL.y += GRAVITY
-	
-		if ((!LEFT and !RIGHT) or (LEFT and RIGHT)) VEL.x = towards(VEL.x, 0, .1)
-		else if(RIGHT) VEL.x = towards(VEL.x, MOVE_SPEED, .1)
-		else if(LEFT) VEL.x = towards(VEL.x, -MOVE_SPEED, .1)
-	
-		if(COYOTE_TIME > 0)
-			COYOTE_TIME--
-	
-		if(VEL.y < 0 and !isfree(x,y+VEL.y/60) and BONK_TIMER <= 0) 
-		{
-			audio_play_sound_on(obj_gamemanager.EMITTER_SFX, SFX_BONK, false, 0, .75, undefined, random_range(.9, 1.1))
-			BONK_TIMER = BONK_DELAY
-			ACTIVE_ANIMATION = ANIM_BONK
-			LOCK_ANIMATION = true
+		COYOTE_TIME = 10
+		GROUNDPOUNDING = false
+		if(DOWN){
+			if ((!LEFT and !RIGHT) or (LEFT and RIGHT))
+			{
+				VEL.x = towards(VEL.x, 0, .8)
+			}
+			else if(RIGHT)
+			{
+				VEL.x = towards(VEL.x, MOVE_SPEED/4, .8)
+			}
+			else if(LEFT) 
+			{
+				VEL.x = towards(VEL.x, -MOVE_SPEED/4, .8)
+			}
+		
+			JUMPBOOST_TIMER--
+		}
+		else if(!UP) {
+			if ((!LEFT and !RIGHT) or (LEFT and RIGHT))
+			{
+				VEL.x = towards(VEL.x, 0, FRICTION)
+			}
+			else if(RIGHT)
+			{
+				if(abs(VEL.x) <=.1 and DIRECTION == 0) {
+					ACTIVE_ANIMATION = ANIM_SLOWTURN
+					LOCK_ANIMATION = true
+				}
+				VEL.x = towards(VEL.x, MOVE_SPEED, FRICTION)
+			}
+			else if(LEFT) 
+			{
+				if(abs(VEL.x) <=.1 and DIRECTION == 1) {
+					ACTIVE_ANIMATION = ANIM_SLOWTURN
+					LOCK_ANIMATION = true
+				}
+				VEL.x = towards(VEL.x, -MOVE_SPEED, FRICTION)
+			}
 		}
 	
-		if(global.duck_pressed and !GROUNDPOUNDING and !SUBMERGED)
-		{
-			audio_play_sound_on(obj_gamemanager.EMITTER_SFX, SFX_DASH, 0, false)
-			GROUNDPOUNDING = true
-			VEL.y = 1000
-		}
+		if(UP) VEL.x = towards(VEL.x, 0, FRICTION)
+	
+		if(VEL.x > 0) DIRECTION = 1
+		else if(VEL.x < 0) DIRECTION = 0
+	
+		VEL.y = 0
+	
+	
+		if(!DOWN and !UP) obj_view.Y_OFFSET = 0
 	}
 	else
 	{
-		var ai = instance_create_depth(x,y,depth+1,obj_afterimage)
-		ai.sprite_index = sprite_index
-		ai.image_index = image_index
-		ai.image_xscale = image_xscale
-		ai.image_yscale = image_yscale
+		if(!GROUNDPOUNDING)
+		{
+			obj_view.Y_OFFSET = 0
+	
+			VEL.y += GRAVITY
+	
+			if ((!LEFT and !RIGHT) or (LEFT and RIGHT)) VEL.x = towards(VEL.x, 0, .1)
+			else if(RIGHT) VEL.x = towards(VEL.x, MOVE_SPEED, .1)
+			else if(LEFT) VEL.x = towards(VEL.x, -MOVE_SPEED, .1)
+	
+			if(COYOTE_TIME > 0)
+				COYOTE_TIME--
+	
+			if(VEL.y < 0 and !isfree(x,y+VEL.y/60) and BONK_TIMER <= 0) 
+			{
+				audio_play_sound_on(obj_gamemanager.EMITTER_SFX, SFX_BONK, false, 0, .75, undefined, random_range(.9, 1.1))
+				BONK_TIMER = BONK_DELAY
+				ACTIVE_ANIMATION = ANIM_BONK
+				LOCK_ANIMATION = true
+			}
+	
+			if(global.duck_pressed and !GROUNDPOUNDING and !SUBMERGED)
+			{
+				audio_play_sound_on(obj_gamemanager.EMITTER_SFX, SFX_DASH, 0, false)
+				GROUNDPOUNDING = true
+				BONK_TIMER = 0
+				LOCK_ANIMATION = false
+			}
+		}
+		else
+		{
+			var ai = instance_create_depth(x,y,depth+1,obj_afterimage)
+			ai.sprite_index = sprite_index
+			ai.image_index = image_index
+			ai.image_xscale = image_xscale
+			ai.image_yscale = image_yscale
 		
-		VEL.x = 0
+			VEL.x = 0
 		
-		var deltaY = y - Y_OLD
+			var deltaY = y - Y_OLD
+		}
+	}
+	
+	
+	if(JUMP and (GROUNDED or (!GROUNDED && COYOTE_TIME > 0) or SUBMERGED)) {
+	
+		if(SUBMERGED)
+		{
+			ACTIVE_ANIMATION = ANIM_SWIM_UP
+			image_index = ANIM_SWIM_UP[0]
+			LOCK_ANIMATION = true
+		}
+		else
+		{
+			ACTIVE_ANIMATION = ANIM_JUMP
+			image_index = ANIM_JUMP[0]
+			LOCK_ANIMATION = true
+		}
+	
+		JUMPING = true
+	
+		if(DOWN or SUBMERGED) JUMP_TIMER = JUMP_DELAY
+	}
+
+	if(JUMPING) JUMP_TIMER++
+	else JUMP_TIMER = 0
+
+	if(JUMP_TIMER >= JUMP_DELAY)
+	{
+		JUMP_TIMER = 0
+		JUMPING = false
+		
+		if(global.jump_held)
+			VEL.y = -JUMP_HEIGHT
+		else
+			VEL.y = -JUMP_HEIGHT / 1.5
+	
+		if(JUMPBOOST_TIMER <= 0)
+			VEL.y = -JUMP_HEIGHT * 1.5
+		
+		COYOTE_TIME = 0
+	
+		if(SUBMERGED)
+			audio_play_sound_on(obj_gamemanager.EMITTER_SFX, SFX_SWIM, 0, false)
+		else
+		{
+			if(JUMPBOOST_TIMER<=0)
+				audio_play_sound_on(obj_gamemanager.EMITTER_SFX, SFX_JUMP, false, 0, 1, 0, 1.25)
+			else
+				audio_play_sound_on(obj_gamemanager.EMITTER_SFX, SFX_JUMP, false, 0, 1, 0, random_range(.8,1.2))
+		}
+	}
+
+	if(DASH and DASH_COOLDOWN <= 0 and !GROUNDPOUNDING){
+		 audio_play_sound_on(obj_gamemanager.EMITTER_SFX, SFX_DASH, 0, false)
+		 DASH_TIMER = 10
+		 DASH_PUNISHMENT+=1.5
+		 DASH_COOLDOWN = 30 * DASH_PUNISHMENT
+		 GUI_DASH_PUNISHMENT = DASH_COOLDOWN
+	 
+		 if(LEFT) DIRECTION = 0
+		 if(RIGHT) DIRECTION = 1
+	 
+		 obj_view.ShakeScreen(.5, 12)
+		 obj_view.ZOOM = 1.05
+	}
+
+}
+
+if(global.taunt and !TAUNTING)
+{
+	audio_play_sound_on(obj_gamemanager.EMITTER_SFX, SFX_TAUNT, false, 0)
+	TAUNTING = true
+	ACTIVE_ANIMATION = ANIM_TAUNT
+	LOCK_ANIMATION = true
+	
+	var bonus = 0
+	
+	if(y > room_height - global.acid_height - 5) bonus = 10
+	if(killTauntTimer > 0) bonus = 20
+	if(!didGoalTaunt){
+		bonus = 20
+		didGoalTaunt = true
+	}
+	
+	if(bonus > 0)
+	{
+		global.scoreboard.bonus += bonus
+		
+		var t = instance_create_layer(x,y-sprite_height, "UI", obj_bonustext)
+		t.value = bonus
 	}
 }
+
+if(killTauntTimer > 0) killTauntTimer--
+
+if(GROUNDPOUNDING)
+	VEL.y = 1000
 
 if(SUBMERGED){
 	if(VEL.x > 0) DIRECTION = 1	
@@ -153,67 +252,18 @@ else if(BONK_TIMER == 0){
 	VEL.y = 100
 }
 
-if(!DOWN or !GROUNDED) JUMPBOOST_TIMER = 60
-
-if(JUMP and (GROUNDED or (!GROUNDED && COYOTE_TIME > 0) or SUBMERGED)) {
-	
-	if(SUBMERGED)
-	{
-		ACTIVE_ANIMATION = ANIM_SWIM_UP
-		image_index = ANIM_SWIM_UP[0]
-		LOCK_ANIMATION = true
-	}
-	else
-	{
-		ACTIVE_ANIMATION = ANIM_JUMP
-		image_index = ANIM_JUMP[0]
-		LOCK_ANIMATION = true
-	}
-	
-	JUMPING = true
-	
-	if(DOWN or SUBMERGED) JUMP_TIMER = JUMP_DELAY
-}
-
-if(JUMPING) JUMP_TIMER++
-else JUMP_TIMER = 0
-
-if(JUMP_TIMER >= JUMP_DELAY)
+if(global.jump_released and !GROUNDED and VEL.y < 0)
 {
-	JUMP_TIMER = 0
-	JUMPING = false
-	
-	VEL.y = -JUMP_HEIGHT
-	
-	if(JUMPBOOST_TIMER <= 0)
-		VEL.y *= 1.5
-		
-	COYOTE_TIME = 0
-	
-	if(SUBMERGED)
-		audio_play_sound_on(obj_gamemanager.EMITTER_SFX, SFX_SWIM, 0, false)
-	else
-	{
-		if(JUMPBOOST_TIMER<=0)
-			audio_play_sound_on(obj_gamemanager.EMITTER_SFX, SFX_JUMP, false, 0, 1, 0, 1.25)
-		else
-			audio_play_sound_on(obj_gamemanager.EMITTER_SFX, SFX_JUMP, false, 0, 1, 0, random_range(.8,1.2))
-	}
+	VEL.y /= 1.5
 }
 
-if(DASH and DASH_COOLDOWN <= 0 and !GROUNDPOUNDING){
-	 audio_play_sound_on(obj_gamemanager.EMITTER_SFX, SFX_DASH, 0, false)
-	 DASH_TIMER = 10
-	 DASH_PUNISHMENT+=1.5
-	 DASH_COOLDOWN = 30 * DASH_PUNISHMENT
-	 GUI_DASH_PUNISHMENT = DASH_COOLDOWN
-	 
-	 if(LEFT) DIRECTION = 0
-	 if(RIGHT) DIRECTION = 1
-	 
-	 obj_view.ShakeScreen(.5, 12)
-	 obj_view.ZOOM = 1.05
+if(TAUNTING)
+{
+	VEL.x = 0
+	VEL.y = 0
 }
+
+if(!DOWN or !GROUNDED) JUMPBOOST_TIMER = 60
 
 if(GROUNDED){
 	if(UP){
@@ -245,8 +295,24 @@ if(DASH_TIMER > 0 and !GROUNDPOUNDING) {
 }
 else if(DASH_TIMER == 0){
 	DASH_TIMER--
+	
+	var bonus = 0
+	
+	if(enemiesSlainThisDash > 1) bonus = 20 * enemiesSlainThisDash
+	
+	if(bonus > 0)
+	{
+		global.scoreboard.bonus += bonus
+		
+		var t = instance_create_layer(x,y-sprite_height, "UI", obj_bonustext)
+		t.value = bonus
+	}
+	
+	enemiesSlainThisDash = 0
 	VEL.x = 0
 }
+
+if(DASH_TIMER<=0 and !GROUNDPOUNDING) enemiesSlainThisDash = 0
 
 if(SUBMERGED)
 {
@@ -290,7 +356,8 @@ VEL.y = round(VEL.y)
 
 if(abs(VEL.x) <= 10 and !LEFT and !RIGHT) VEL.x = 0
 
-move_and_collide(VEL.x / 60, VEL.y / 60, [obj_clip, TILEMAP], 8)
+move_and_collide(VEL.x / 60, 0, [obj_clip, TILEMAP], 8)
+move_and_collide(0, VEL.y / 60, [obj_clip, TILEMAP], 8)
 x=round(x)
 y=round(y)
 
@@ -339,8 +406,12 @@ if(LOCK_ANIMATION)
 			ACTIVE_ANIMATION == ANIM_SLOWTURN or
 			ACTIVE_ANIMATION == ANIM_STOP or
 			ACTIVE_ANIMATION == ANIM_SWIM_UP or
-			ACTIVE_ANIMATION == ANIM_BONK)
+			ACTIVE_ANIMATION == ANIM_BONK or
+			ACTIVE_ANIMATION == ANIM_TAUNT)
+			{
 			LOCK_ANIMATION = false
+			TAUNTING = false
+			}
 	}
 }
 
@@ -393,6 +464,7 @@ if(global.up_pressed and GROUNDED)
 {
 	if(place_meeting(x,y,obj_goal))
 	{
+		didGoalTaunt = false
 		instance_create_depth(0,0, -9999, obj_stagetransition)
 	}
 }

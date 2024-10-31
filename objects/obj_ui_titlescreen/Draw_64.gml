@@ -7,6 +7,7 @@ draw_rectangle(0, 0, window_get_width(), window_get_height(), false)
 
 draw_set_alpha(1)
 draw_set_color(c_white)
+draw_set_font(font_main)
 
 if(state == 0)
 {
@@ -17,7 +18,7 @@ if(state == 0)
 	else
 		draw_sprite_ext(s_logo_halloween, 0, window_get_width()/2, window_get_height()/2-100+title_y_offset, global.GameScale, global.GameScale, title_rot, c_white, 1)
 
-	draw_sprite_ext(s_title_clicktostart, 0, window_get_width()/2, window_get_height()-100, global.GameScale-.5, global.GameScale-.5, 0, c_white, 1)
+	draw_sprite_ext(s_title_clicktostart, 0, window_get_width()/2, window_get_height()-(100*(global.GameScale/2)), global.GameScale-.5, global.GameScale-.5, 0, c_white, 1)
 }
 
 
@@ -34,6 +35,7 @@ draw_text_shadow(window_get_width() - 192 * global.GameScale, 64, "Space - Jump"
 draw_text_shadow(window_get_width() - 192 * global.GameScale, 96, "Shift - Dash",1,1,0,c_white)
 draw_text_shadow(window_get_width() - 192 * global.GameScale, 128, "S - Duck / Charge Super Jump",1,1,0,c_white)
 draw_text_shadow(window_get_width() - 192 * global.GameScale, 160, "W - Look up",1,1,0,c_white)
+draw_text_shadow(window_get_width() - 192 * global.GameScale, 192, "C - Taunt",1,1,0,c_white)
 
 if(transition_timer > 0) {
 	draw_set_color(c_black)

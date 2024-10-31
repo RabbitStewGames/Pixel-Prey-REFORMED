@@ -1,3 +1,10 @@
+if(instance_exists(obj_ui_options)) {
+	
+	image_speed = 0
+	exit;
+	
+}
+
 if(active_animation == attributes.anim.capture)
 	image_speed = .5
 else
@@ -61,16 +68,18 @@ if(stun > 0){
 	
 }
 
-if(place_meeting(x,y,obj_player) and !ate_player and obj_player.STATE == PlayerState.Default and !dead_af and stun <= 0)
+if(place_meeting(x,y,obj_player) and !ate_player and obj_player.STATE == PlayerState.Default and !dead_af)
 {
 	if(obj_player.DASH_TIMER > 0 or obj_player.GROUNDPOUNDING)
 	{
 		dead_af = true
 		global.scoreboard.kills++
 		death_timer = 60
-		//audio_play_sound_on(obj_gamemanager.EMITTER_SFX, attributes.sfx_death, false, 0)	
+		audio_play_sound_on(obj_gamemanager.EMITTER_SFX, attributes.sfx_death, false, 0)	
+		obj_player.killTauntTimer = 60
+		obj_player.enemiesSlainThisDash++
 	}
-	else if(obj_player.IMMUNITY <= 0)
+	else if(obj_player.IMMUNITY <= 0 and stun <= 0)
 	{
 		audio_play_sound_on(obj_gamemanager.EMITTER_SFX, attributes.sfx_capture, false, 0)	
 		escape_progress = 0
@@ -87,7 +96,7 @@ if(ate_player)
 	vel.y = 0
 	if(global.left_pressed or global.right_pressed){
 		escape_progress++
-		obj_view.ShakeScreen(.1, 16)
+		obj_view.ShakeScreen(.5, 8)
 		
 		if(escape_progress >= escape_requirement){
 			obj_player.STATE = PlayerState.Default

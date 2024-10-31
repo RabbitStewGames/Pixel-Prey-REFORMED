@@ -1,0 +1,30 @@
+=== 0.1.4.0 ===
+
+ADDITIONS
+- Added controller support
+- Added 20 new layouts
+- Added new patroller enemy
+- Added modding documentation (resources/documentation)
+- Added a taunt animation, press Control or C on keyboard or Y/Triangle on a gamepad. Gives you point bonuses based on certain conditions.
+
+
+CHANGES
+- Tweaked screen shake when struggling
+- Slightly increased player jump height
+- Chaser enemy will only be able to eat you if it is not inside a wall
+- Changed chaser enemy's collision mask
+- Chaser enemy can now be defeated while it is stunned
+- Defeating multiple enemies in a single dash will now reward you with bonus points
+- Added shorthopping, making your jumps shorter when you release the jump button early
+- Made chaser enemy's movement smoother and added a slight up-and-down floating movement
+
+
+FIXES
+- Fixed UI scaling issues
+- Fixed a bug where groundpounding during a ceiling bonk made you fall slowly
+- Reverted a change where collectible count sped up, since it made a very unpleasant beeping noise
+- Fixed a visual bug where chat window expression zoomed in horizontally when showing/hiding
+- Fixed sprite sorting issues, entities and the player will now always display in front of collectibles and the exit goal
+- Removed leftover debug text
+- Fixed quirks with player movement by separating x and y movement application into 2 separate move_and_collide() calls
+- Fixed an issue where enemies ignored the pause screen

@@ -17,7 +17,8 @@ global.scoreboard = {
 	collectibles:[],
 	kills:0,
 	farthest_stage:0,
-	average_time:0.0
+	average_time:0.0,
+	bonus:0
 }
 
 CURRENT_STAGE = 0
@@ -41,7 +42,7 @@ NextStage = function(){
 	
 	
 	if(CURRENT_STAGE % 5 == 0) {
-		global.acid_speed++
+		global.acid_speed+= clamp(CURRENT_STAGE/5/2, 0, 2.5)
 		
 		if(!instance_exists(obj_chatbox_ingame)){
 			var cb = instance_create_layer(0,0, "UI", obj_chatbox_ingame)

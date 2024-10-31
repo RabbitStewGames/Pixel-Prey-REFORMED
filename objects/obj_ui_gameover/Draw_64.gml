@@ -30,8 +30,24 @@ if(doingScoreCount){
 	
 	if(scoreCountPhase >= 0)
 		draw_text_transformed(xRoot, yRoot + 16 * textScale + textPadding, $"S: {talliedStages}", textScale * global.GameScale, textScale * global.GameScale, 0)
-	if(scoreCountPhase >= 1)
-		draw_text_transformed(xRoot, yRoot + 32 * textScale + textPadding * 2, $"T: {talliedAvgTime}", textScale * global.GameScale, textScale * global.GameScale, 0)
+	if(scoreCountPhase >= 1){
+		
+		var m =floor(talliedAvgTime/60)
+		var s = floor(talliedAvgTime mod 60)
+		var ms = talliedAvgTime-floor(talliedAvgTime)
+
+		var s_string = string(s)
+
+		if(s < 10) s_string = "0" + s_string
+
+		var ms_string = string(ms)
+		ms_string = string_replace(ms_string, "0.", "")
+
+		var timestring = $"{m}:{s_string}.{ms_string}"
+		
+		draw_text_transformed(xRoot, yRoot + 32 * textScale + textPadding * 2, $"T: {timestring}", textScale * global.GameScale, textScale * global.GameScale, 0)
+	
+	}
 	if(scoreCountPhase >= 2)
 		draw_text_transformed(xRoot, yRoot + 48 * textScale + textPadding * 3, $"K: {talliedKills}", textScale * global.GameScale, textScale * global.GameScale, 0)
 	if(scoreCountPhase >= 3 and collectibleSprite != -1){
