@@ -215,7 +215,7 @@ if(global.taunt and !TAUNTING)
 	
 	if(y > room_height - global.acid_height - 5) bonus = 10
 	if(killTauntTimer > 0) bonus = 20
-	if(!didGoalTaunt){
+	if(!didGoalTaunt and place_meeting(x,y,obj_goal)){
 		bonus = 20
 		didGoalTaunt = true
 	}

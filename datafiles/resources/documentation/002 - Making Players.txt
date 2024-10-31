@@ -3,7 +3,6 @@ PIXEL PREY R DOCUMENTATION
 002 - MAKING       PLAYERS
 ==========================
 
-(wip)
 
 == SECTION 002a: OVERVIEW ==
 

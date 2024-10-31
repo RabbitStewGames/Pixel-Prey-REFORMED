@@ -53,22 +53,6 @@ function LoadStage(tilemap, decormap, index)
 			var col = surface_getpixel(surf, _x, _y)
 			
 			if(col == c_white or _x >= sprite_get_width(img)) grid_[# _x, _y] = WALL
-			
-			if(col == c_lime) {obj_player.x = _x * CELL_WIDTH; obj_player.y = _y * CELL_HEIGHT}
-			if(col == c_red) 
-			{
-				instance_create_layer(_x * CELL_WIDTH, (_y + 1) * CELL_HEIGHT, "Stage_Instances", obj_goal)
-			}
-			
-			if(col == c_yellow) instance_create_layer(_x * CELL_WIDTH, _y * CELL_HEIGHT, "Stage_Instances", obj_collectible)
-			
-			if(col == c_blue and global.level_list[global.ACTIVE_LEVEL].leveldata.chaser != -1){
-				instance_create_layer(_x * CELL_WIDTH, _y * CELL_HEIGHT, "Instances", obj_chaser)
-			}
-			
-			if(col == c_aqua and global.level_list[global.ACTIVE_LEVEL].leveldata.patroller != -1){
-				instance_create_layer(_x * CELL_WIDTH, _y * CELL_HEIGHT + CELL_HEIGHT, "Instances", obj_patroller)
-			}
 		}
 	}
 	
@@ -127,10 +111,15 @@ function LoadStage(tilemap, decormap, index)
 				 
 				var _tile_index = NORTH*n + WEST*w +EAST*e + SOUTH*s + 1
 				
-				if(n and w and !nw) _tile_index = 17
-				if(n and e and !ne) _tile_index = 18
-				if(s and w and !sw) _tile_index = 19
-				if(s and e and !se) _tile_index = 20
+				if(!n and s and w and e and !se and !sw) _tile_index = 25
+				if(!w and s and n and e and !se and !ne) _tile_index = 26
+				if(!e and s and w and n and !nw and !sw) _tile_index = 27
+				if(!s and n and w and e and !se and !nw) _tile_index = 28
+				
+				if(n and w and !nw and s and e) _tile_index = 17
+				if(n and e and !ne and s and w) _tile_index = 18
+				if(s and w and !sw and n and e) _tile_index = 19
+				if(s and e and !se and w and n) _tile_index = 20
 				
 				if(n and e and w and s)
 				{
@@ -139,6 +128,7 @@ function LoadStage(tilemap, decormap, index)
 					if(!sw and !se and nw and ne) _tile_index = 23
 					if(!nw and !sw and se and ne) _tile_index = 24	
 				}
+				
 				
 				tilemap_set(tilemap, _tile_index, _x, _y)
 			}
@@ -189,6 +179,29 @@ function LoadStage(tilemap, decormap, index)
 		}
 	}
 	
+	for(var _x = 0; _x < width_; _x++)
+	{
+		for (var _y = 0; _y < height_; _y++)
+		{
+			var col = surface_getpixel(surf, _x, _y)
+			
+			if(col == c_lime) {obj_player.x = _x * CELL_WIDTH; obj_player.y = _y * CELL_HEIGHT}
+			if(col == c_red) 
+			{
+				instance_create_layer(_x * CELL_WIDTH, (_y + 1) * CELL_HEIGHT, "Stage_Instances", obj_goal)
+			}
+			
+			if(col == c_yellow) instance_create_layer(_x * CELL_WIDTH, _y * CELL_HEIGHT, "Stage_Instances", obj_collectible)
+			
+			if(col == c_blue and global.level_list[global.ACTIVE_LEVEL].leveldata.chaser != -1){
+				instance_create_layer(_x * CELL_WIDTH, _y * CELL_HEIGHT, "Instances", obj_chaser)
+			}
+			
+			if(col == c_aqua and global.level_list[global.ACTIVE_LEVEL].leveldata.patroller != -1){
+				instance_create_layer(_x * CELL_WIDTH, _y * CELL_HEIGHT + CELL_HEIGHT, "Instances", obj_patroller)
+			}
+		}
+	}
 	
 	// Cleanup
 	

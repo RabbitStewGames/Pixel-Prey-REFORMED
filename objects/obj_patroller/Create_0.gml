@@ -1,3 +1,4 @@
+
 attributes = global.level_list[global.ACTIVE_LEVEL].leveldata.patroller
 
 image_xscale = 2
@@ -29,3 +30,5 @@ sprite_set_speed(sprite_index, attributes.framerate, spritespeed_framespersecond
 sprite_set_offset(sprite_index, sprite_get_width(sprite_index)/2, sprite_get_height(sprite_index))
 sprite_set_offset(mask_index, sprite_get_width(mask_index)/2, sprite_get_height(mask_index))
 object_set_mask(object_index, attributes.mask)
+
+event_inherited()

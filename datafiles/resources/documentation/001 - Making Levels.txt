@@ -3,7 +3,6 @@ PIXEL PREY R DOCUMENTATION
 001 - MAKING        LEVELS
 ==========================
 
-(wip)
 
 == SECTION 001a: STAGES ==
 
@@ -26,12 +25,12 @@ You can edit more than just stage layouts. You can also change the building bloc
 
 You can find a level's attributes in 'resources/levels/levelname/attributes.json'. This file controls things like the name the level shows in the level select (0.1.3, currently not implemented), the pred's name, the acid speed, and more. Here's the full rundown:
 
-"levelname"    : String (The name of the level in the Level Select)
-"predname"     : String (The name of the pred shown under the levelname)
-"acid_speed"   : Number (The speed in pixels/second the acid rises)
-"collectibles" : Array (see 001c)
-"gameovers"    : Array (see 001d)
-"images"       : Struct
+"levelname"        : String (The name of the level in the Level Select)
+"predname"         : String (The name of the pred shown under the levelname)
+"acid_speed"       : Number (The speed in pixels/second the acid rises)
+"collectibles"     : Array (see 001c)
+"gameovers"        : Array (see 001d)
+"images"           : Struct
 - "ambient_light"  : Color (The color of ambient light in the level (example: [255, 255, 255] is white, [0,0,0] is black))
 - "acid_color"     : Color (The color of acid in the level)
 - "acid_alpha"     : Number (From 0.0 to 1.0, how opaque the acid is)

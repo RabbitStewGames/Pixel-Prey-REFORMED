@@ -17,6 +17,7 @@ CHANGES
 - Defeating multiple enemies in a single dash will now reward you with bonus points
 - Added shorthopping, making your jumps shorter when you release the jump button early
 - Made chaser enemy's movement smoother and added a slight up-and-down floating movement
+- Improved tilemap rules
 
 
 FIXES
@@ -28,3 +29,4 @@ FIXES
 - Removed leftover debug text
 - Fixed quirks with player movement by separating x and y movement application into 2 separate move_and_collide() calls
 - Fixed an issue where enemies ignored the pause screen
+- Added a check that should automatically unstick obstacles and the player from walls when a stage is loaded

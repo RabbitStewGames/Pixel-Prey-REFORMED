@@ -59,6 +59,8 @@ NextStage = function(){
 	obj_acid.y = room_height
 	array_push(TIMES, STAGE_TIME)
 	STAGE_TIME = 0
+	
+	obj_player.Unstick()
 }
 
 GetAverageTime = function(){

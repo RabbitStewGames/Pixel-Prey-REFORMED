@@ -2,7 +2,7 @@
   "$GMSprite":"",
   "%Name":"s_tileset_orange",
   "bboxMode":1,
-  "bbox_bottom":159,
+  "bbox_bottom":287,
   "bbox_left":0,
   "bbox_right":159,
   "bbox_top":0,
@@ -12,14 +12,14 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"33893673-a89e-45b3-ac53-3d4147c40c5f","name":"33893673-a89e-45b3-ac53-3d4147c40c5f","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"e7643a33-2f11-4c50-8461-5112e3d5d6f4","name":"e7643a33-2f11-4c50-8461-5112e3d5d6f4","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
-  "height":160,
+  "height":288,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"085915ee-eba9-46fe-a71e-2d72cca479f6","blendMode":0,"displayName":"default","isLocked":false,"name":"085915ee-eba9-46fe-a71e-2d72cca479f6","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"849940ca-d8d2-4e12-957d-b346e06b9cf5","blendMode":0,"displayName":"default","isLocked":false,"name":"849940ca-d8d2-4e12-957d-b346e06b9cf5","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"s_tileset_orange",
   "nineSlice":null,
@@ -69,8 +69,8 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"33893673-a89e-45b3-ac53-3d4147c40c5f","path":"sprites/s_tileset_orange/s_tileset_orange.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"af06d6ba-5d0e-4dbc-ad84-64dd13d30405","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"e7643a33-2f11-4c50-8461-5112e3d5d6f4","path":"sprites/s_tileset_orange/s_tileset_orange.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"3627b81e-3b2e-4154-bf62-256bdd68cb62","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

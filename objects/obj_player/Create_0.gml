@@ -117,6 +117,20 @@ STATE = PlayerState.Default
 FOOTSTEP_TIMER = 0
 FOOTSTEP_DELAY = 15
 
+Unstick = function()
+{
+	for(var _x = 0; _x < sprite_width; _x++)
+	{
+		if(place_meeting(x,y,TILEMAP))x++
+		else break
+	}
+	for(var _y = 0; _y < sprite_height; _y++)
+	{
+		if(place_meeting(x,y,TILEMAP))y--
+		else break
+	}
+}
+
 DamageMe = function(src, amt, ignore_immunity = false)
 {
 	if(IMMUNITY <= 0 or ignore_immunity){
